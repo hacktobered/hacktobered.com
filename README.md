@@ -17,6 +17,11 @@ Here are some details about its initial idea / problem statement, tech stack, ho
 
 [![Basic User Flow](https://hacktobered.s3.us-west-2.amazonaws.com/hacktoberpoc.png)](https://www.youtube.com/shorts/636Fm5RP4aU)
 
+> **An easy task to pick up is creating more user cards like the one below:**
+>
+> ![cheerCard_small](https://user-images.githubusercontent.com/14895768/195179754-7cf72ff6-9675-467b-a5a0-07c87c9434db.png)
+
+
 ## Getting Started
 
 1. Install npm Dependencies:
