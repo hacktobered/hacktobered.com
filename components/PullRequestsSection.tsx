@@ -39,8 +39,6 @@ export const PullRequestsSection = (props: UserCardPropType) => {
           No PRs yet! But its never late for some coffee and code!
         </Center>
       )}
-      <Divider my={8} />
-      <Text mt={12}>{JSON.stringify(searchData)}</Text>
     </>
   );
 };
