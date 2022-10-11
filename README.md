@@ -28,16 +28,25 @@ yarn
 ```
 
 2. Create .env.local file and copy content of .env.local.example.
+   
 3. Create NEXTAUTH_SECRET - # Linux: `openssl rand -hex 32` or go to https://generate-secret.now.sh/32
+
 4. Create [Github OAuth App](https://github.com/organizations/hacktobered/settings/applications) . Copy Client ID and Client Secret into GITHUB_ID and GITHUB_SECRET.
-4. Run the development server:
+
+5. If you want to save logged-in user details, you can use mongo db. Provide connection details in .env.local. However if you don't want - make sure to comment line 14 in pages\api\auth\[...nextauth].tsx before running the code.
+   ```js
+     //adapter: MongoDBAdapter(clientPromise),
+   ```
+
+6. Run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
 ```
-5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+7. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 Facing any issues? Feel free to open a ticket.
 
@@ -53,4 +62,4 @@ Facing any issues? Feel free to open a ticket.
 - React, Next.js, Typescript
 - [Chakra UI](https://chakra-ui.com/) component library
 - [Next-Auth](https://next-auth.js.org/)
-
+- (Optional) MongoDB - if you want to save user details.
