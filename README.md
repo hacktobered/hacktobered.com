@@ -13,6 +13,10 @@ Here are some details about its initial idea / problem statement, tech stack, ho
 
 **Let us build then!**
 
+### Proposed user flow
+
+[![Demo Video](https://hacktobered.s3.us-west-2.amazonaws.com/user-flow-demo.jpg)](https://hacktobered.s3.us-west-2.amazonaws.com/hacktobered_v1.mov)
+
 ## Getting Started
 
 1. Install npm Dependencies:
