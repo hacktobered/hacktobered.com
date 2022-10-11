@@ -1,6 +1,6 @@
 # Hacktobered.com
 
-I decided to build during [Hacktoberfest 2022](https://hacktoberfest.com/).
+I decided to build this fun project during [Hacktoberfest 2022](https://hacktoberfest.com/).
 Here are some details about its initial idea / problem statement, tech stack, how you can contribute, etc.
 
 ## Initial Idea / Problem Statement
