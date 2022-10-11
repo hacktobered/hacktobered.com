@@ -41,6 +41,13 @@ yarn dev
 
 Facing any issues? Feel free to open a ticket.
 
+## How to contribute
+
+- Fork this repo.
+- Open an issue. Get it triaged/approved first if in doubt. I'll add "Triaged" label in such tasks.
+- Read [CONTRIBUTING.md](https://github.com/hacktobered/hacktobered.com/blob/main/CONTRIBUTING.md)
+- **Send PRs against dev branch only.**
+
 ## Tech Stack:
 
 - React, Next.js, Typescript
