@@ -18,11 +18,11 @@ import { BiGitPullRequest } from "react-icons/bi";
 import { BsGithub } from "react-icons/bs";
 import { MdIosShare } from "react-icons/md";
 import NextLink from "next/link";
-import { PullRequest } from "../types/PREntry";
+import { PullRequest } from "../../types/PREntry";
 import download from "downloadjs";
 import { useRef } from "react";
 
-export const PullRequestWithUserCard = (props: PullRequest) => {
+const BasicCard = (props: PullRequest) => {
   const domEl = useRef<HTMLDivElement>(null);
   const pull = props;
 
@@ -79,3 +79,5 @@ export const PullRequestWithUserCard = (props: PullRequest) => {
     </Stack>
   );
 };
+
+export default BasicCard;

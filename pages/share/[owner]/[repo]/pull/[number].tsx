@@ -1,4 +1,8 @@
 import * as React from "react";
+import {
+  BasicCard,
+  CheerCard,
+} from "../../../../../components/PullRequestDetailCards";
 import { BiChevronRight, BiGitPullRequest } from "react-icons/bi";
 import { Box, Container, Text } from "@chakra-ui/react";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -10,7 +14,7 @@ import { NavBar } from "../../../../../components/NavBar";
 import type { NextPage } from "next";
 import { PageWrapper } from "../../../../../components/PageWrapper";
 import { PullRequest } from "../../../../../types/PREntry";
-import { PullRequestWithUserCard } from "../../../../../components/PullRequestWithUserCard";
+
 import { UserCard } from "../../../../../components/UserCard";
 import { UserDetails } from "../../../../../types/UserDetails";
 import { apiWrapper } from "../../../../../apiWrapper";
@@ -47,10 +51,10 @@ const Home: NextPage = () => {
             {pullRequest != null ? (
               <>
                 <Card mt={6}>
-                  <PullRequestWithUserCard
-                    key={pullRequest.number}
-                    {...pullRequest}
-                  />
+                  <BasicCard key={pullRequest.number} {...pullRequest} />
+                </Card>
+                <Card mt={6}>
+                  <CheerCard key={pullRequest.number} {...pullRequest} />
                 </Card>
               </>
             ) : (
