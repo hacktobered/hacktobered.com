@@ -29,8 +29,8 @@ export const PullRequestsSection = (props: UserCardPropType) => {
   return (
     <>
       {!!searchData?.issueCount && (
-        <Text fontWeight={"600"}>
-          {searchData?.issueCount} Pull Requests found
+        <Text mt={4} fontWeight={"400"}>
+          🎉🎉🎉 {searchData?.issueCount} Pull Requests found
         </Text>
       )}
       <PullRequestsList pulls={searchData?.edges} />

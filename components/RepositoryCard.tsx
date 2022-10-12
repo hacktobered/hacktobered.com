@@ -17,46 +17,44 @@ import { BiGitPullRequest } from "react-icons/bi";
 import { BsGithub } from "react-icons/bs";
 import { MdIosShare } from "react-icons/md";
 import NextLink from "next/link";
-import { PullRequest } from "../types/PREntry";
+import { OwnedRepository } from "../types/OwnedRepoResults";
 
-export const PullRequestCard = (props: PullRequest) => {
-  const pull = props;
+export const RepositoryCard = (props: OwnedRepository) => {
+  const repo = props;
   return (
-    <Stack fontSize="sm" spacing="4">
+    <Stack fontSize="md" spacing="4">
       <Stack direction="column" justify="space-between" spacing="4">
         <Text color="muted">
-          <Icon as={BsGithub} color="blue.500" mr={2} />
-          {pull.repository?.nameWithOwner}
+          <Icon as={BsGithub} mr={2} fontWeight="medium" color="emphasized" />
+          {repo.name}
         </Text>
-        <Box fontSize="md">
-          <Text fontWeight="medium" color="emphasized">
-            {pull.title}
-          </Text>
+        <Box fontSize="sm">
+          <Text noOfLines={2}>{repo.description}</Text>
         </Box>
         <Flex justify="space-between">
-          <NextLink href={pull.url} target="_blank" passHref>
+          <NextLink href={repo.url} target="_blank" passHref>
             <Button
               as="a"
-              leftIcon={<BiGitPullRequest fontWeight={"bold"} />}
+              leftIcon={<BsGithub fontWeight={"bold"} />}
               colorScheme="teal"
               variant="outline"
               fontSize={"18px"}
             >
-              View PR
+              View Repo
             </Button>
           </NextLink>
           <NextLink
-            href={`/share/${pull.url.replace("https://github.com/", "")}`}
+            href={`/repo/${repo.url.replace("https://github.com/", "")}`}
             passHref
           >
             <Button
               as="a"
-              leftIcon={<MdIosShare fontWeight={"bold"} />}
+              leftIcon={<BiGitPullRequest fontWeight={"bold"} />}
               colorScheme="teal"
               variant="solid"
               fontSize={"18px"}
             >
-              Share
+              View PRs
             </Button>
           </NextLink>
         </Flex>
