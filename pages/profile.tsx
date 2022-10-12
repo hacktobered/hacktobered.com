@@ -8,15 +8,20 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
+  Tag,
   Text,
 } from "@chakra-ui/react";
+import {
+  CommunitySection,
+  ContributorSection,
+  MaintainerSection,
+} from "../components/ProfileSections";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { Card } from "../components/Card";
 import { LoginComponent } from "../components/LoginComponent";
 import { NavBar } from "../components/NavBar";
 import type { NextPage } from "next";
-import { PullRequestsSection } from "../components/PullRequestsSection";
 import { UserCard } from "../components/UserCard";
 import { UserDetails } from "../types/UserDetails";
 import { apiWrapper } from "../apiWrapper";
@@ -56,13 +61,13 @@ const Profile: NextPage = () => {
                     </TabList>
                     <TabPanels>
                       <TabPanel>
-                        <PullRequestsSection user={userDetails} />
+                        <ContributorSection user={userDetails} />
                       </TabPanel>
                       <TabPanel>
-                        <p>Maintainer!</p>
+                        <MaintainerSection user={userDetails} />
                       </TabPanel>
                       <TabPanel>
-                        <p>Community!</p>
+                        <CommunitySection user={userDetails} />
                       </TabPanel>
                     </TabPanels>
                   </Tabs>

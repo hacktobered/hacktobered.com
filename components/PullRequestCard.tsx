@@ -22,7 +22,7 @@ import { PullRequest } from "../types/PREntry";
 export const PullRequestCard = (props: PullRequest) => {
   const pull = props;
   return (
-    <Stack fontSize="sm" px="4" spacing="4">
+    <Stack fontSize="sm" spacing="4">
       <Stack direction="column" justify="space-between" spacing="4">
         <Text color="muted">
           <Icon as={BsGithub} color="blue.500" mr={2} />
