@@ -60,7 +60,9 @@ Facing any issues? Feel free to open a ticket.
 ## How to contribute
 
 - Fork this repo.
-- Open an issue. Get it triaged/approved first if in doubt. I'll add "Triaged" label in such tasks.
+- Open an issue. Get it triaged/approved first if in doubt.
+- If the issue already exists - You can directly send a PR - No need of asking "assign me this task".
+- Please adhere to our milestone timelines.
 - Read [CONTRIBUTING.md](https://github.com/hacktobered/hacktobered.com/blob/main/CONTRIBUTING.md)
 - **Send PRs against dev branch only.**
 

@@ -3,9 +3,9 @@ import { Center, Divider, Text } from "@chakra-ui/react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { PullRequestsList } from "./PullRequestsList";
-import { SearchResults } from "../types/SearchResults";
-import { UserCardPropType } from "../types/UserCardPropType";
-import { apiWrapper } from "../apiWrapper";
+import { SearchResults } from "../../types/SearchResults";
+import { UserCardPropType } from "../../types/UserCardPropType";
+import { apiWrapper } from "../../apiWrapper";
 
 export const PullRequestsSection = (props: UserCardPropType) => {
   const [searchData, setSearchData] = useState<SearchResults>();
@@ -29,10 +29,11 @@ export const PullRequestsSection = (props: UserCardPropType) => {
   return (
     <>
       {!!searchData?.issueCount && (
-        <Text fontWeight={"600"}>
-          {searchData?.issueCount} Pull Requests found
+        <Text mt={4} fontWeight={"400"}>
+          🎉🎉🎉 {searchData?.issueCount} Pull Requests found
         </Text>
       )}
+      <Divider py={4} />
       <PullRequestsList pulls={searchData?.edges} />
       {!searchData?.issueCount && (
         <Center mt={4}>

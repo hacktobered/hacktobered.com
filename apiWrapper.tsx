@@ -1,3 +1,7 @@
+import {
+  OwnedRepoResultsDataWrapper,
+  OwnedRepository,
+} from "./types/OwnedRepoResults";
 import { SearchResults, SearchResultsDataWrapper } from "./types/SearchResults";
 import { PullRequest } from "./types/PullRequest";
 import { graphql } from "@octokit/graphql";
@@ -13,6 +17,7 @@ const fetchUserDetails = async (accessToken: string) => {
     return response.json();
   });
 };
+
 const fetchUserPullRequests = async (accessToken: string, login: string) => {
   const PULL_REQUEST_QUERY = `
   {
@@ -52,6 +57,79 @@ const fetchUserPullRequests = async (accessToken: string, login: string) => {
   const search: SearchResults | undefined = searchData.search;
   return search;
 };
+
+const fetchUserMaintainedRepositories = async (
+  accessToken: string,
+  login: string
+) => {
+  const USER_REPOS_QUERY = `
+  fragment Repos on RepositoryConnection {
+    nodes {
+      # Metadata
+      name
+      url
+      description
+  
+      # Dates
+        
+      # Counts
+      stargazers {
+        totalCount
+      }
+      forkCount
+      defaultBranchRef {
+        commits: target {
+          ... on Commit {
+            history(first: 1) {
+              totalCount
+            }
+          }
+        }
+      }
+     
+      repositoryTopics(first: 10) {
+        nodes {
+          topic {
+            name
+            stargazers {
+              totalCount
+            }
+            viewerHasStarred
+          }
+          url
+        }
+      }
+    }
+  }
+  
+  {
+    viewer {
+      original: repositories(
+        first: 100
+        ownerAffiliations: OWNER
+        privacy: PUBLIC
+        isFork: false
+        isLocked: false
+        orderBy: { field: UPDATED_AT, direction: DESC }
+      ) {
+        ...Repos
+      }
+    }
+  }  
+`;
+  const searchData: OwnedRepoResultsDataWrapper = await graphql(
+    USER_REPOS_QUERY,
+    {
+      headers: {
+        authorization: `token ${accessToken}`,
+      },
+    }
+  );
+  const ownedRepos: OwnedRepository[] | undefined =
+    searchData.viewer?.original.nodes;
+  return ownedRepos;
+};
+
 const fetchPullRequestDetails = async (
   accessToken: string,
   owner: string,
@@ -100,5 +178,6 @@ const fetchPullRequestDetails = async (
 export const apiWrapper = {
   fetchPullRequestDetails,
   fetchUserDetails,
+  fetchUserMaintainedRepositories,
   fetchUserPullRequests,
 };
