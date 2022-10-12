@@ -12,19 +12,19 @@ import {
   useFocusOnShow,
 } from "@chakra-ui/react";
 import { HTMLMotionProps, Variants, motion } from "framer-motion";
-import { signOut } from "next-auth/react";
 
 import {
   HiBookOpen,
+  HiOutlineLogout,
   HiOutlineMenu,
   HiOutlineX,
-  HiOutlineLogout,
   HiQuestionMarkCircle,
 } from "react-icons/hi";
 import { FocusLock } from "@chakra-ui/focus-lock";
 import Link from "next/link";
 import { NavLink } from "./NavLink";
 import { RemoveScroll } from "react-remove-scroll";
+import { signOut } from "next-auth/react";
 
 const variants: Variants = {
   show: {
