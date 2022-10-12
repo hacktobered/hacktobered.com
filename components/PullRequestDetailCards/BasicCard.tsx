@@ -35,15 +35,16 @@ const BasicCard = (props: PullRequest) => {
   };
 
   return (
-    <Stack
-      fontSize="sm"
-      px="4"
-      spacing="4"
-      id="domEl"
-      ref={domEl}
-      backgroundColor="white"
-    >
-      <Stack direction="column" justify="space-between" spacing="4" m={4}>
+    <Stack fontSize="sm" spacing="4" backgroundColor="white">
+      <Stack
+        id="domEl"
+        ref={domEl}
+        direction="column"
+        justify="space-between"
+        spacing="4"
+        p={4}
+        backgroundColor="white"
+      >
         <Text color="muted">
           <Icon as={BsGithub} color="blue.500" mr={2} />
           {pull.repository?.nameWithOwner}
@@ -63,7 +64,9 @@ const BasicCard = (props: PullRequest) => {
             <Text color="muted">{pull.author.url}</Text>
           </Box>
         </HStack>
-        <Flex justify="space-between">
+      </Stack>
+      <Stack px={4} justify="space-between">
+        <Flex>
           <Button
             as="a"
             leftIcon={<MdIosShare fontWeight={"bold"} />}
