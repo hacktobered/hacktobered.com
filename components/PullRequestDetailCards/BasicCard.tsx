@@ -63,18 +63,7 @@ const BasicCard = (props: PullRequest) => {
             <Text color="muted">{pull.author.url}</Text>
           </Box>
         </HStack>
-        <Flex justify="space-between">
-          <Button
-            as="a"
-            leftIcon={<MdIosShare fontWeight={"bold"} />}
-            colorScheme="teal"
-            variant="solid"
-            fontSize={"18px"}
-            onClick={() => downloadPNG()}
-          >
-            Share
-          </Button>
-        </Flex>
+        <Flex justify="space-between"></Flex>
       </Stack>
     </Stack>
   );
