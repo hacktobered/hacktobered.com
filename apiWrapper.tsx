@@ -3,7 +3,7 @@ import {
   OwnedRepository,
 } from "./types/OwnedRepoResults";
 import { SearchResults, SearchResultsDataWrapper } from "./types/SearchResults";
-import { PullRequest } from "./types/PREntry";
+import { PullRequest } from "./types/PullRequest";
 import { graphql } from "@octokit/graphql";
 
 const fetchUserDetails = async (accessToken: string) => {

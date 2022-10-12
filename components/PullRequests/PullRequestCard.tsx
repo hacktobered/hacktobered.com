@@ -17,7 +17,7 @@ import { BiGitPullRequest } from "react-icons/bi";
 import { BsGithub } from "react-icons/bs";
 import { MdIosShare } from "react-icons/md";
 import NextLink from "next/link";
-import { PullRequest } from "../../types/PREntry";
+import { PullRequest } from "../../types/PullRequest";
 
 export const PullRequestCard = (props: PullRequest) => {
   const pull = props;

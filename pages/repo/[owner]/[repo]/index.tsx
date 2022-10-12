@@ -13,7 +13,7 @@ import { LoginComponent } from "../../../../components/LoginComponent";
 import { NavBar } from "../../../../components/NavBar";
 import type { NextPage } from "next";
 import { PageWrapper } from "../../../../components/PageWrapper";
-import { PullRequest } from "../../../../types/PREntry";
+import { PullRequest } from "../../../../types/PullRequest";
 
 import { UserCard } from "../../../../components/UserCard";
 import { UserDetails } from "../../../../types/UserDetails";
