@@ -81,12 +81,14 @@ const CheerCard = (props: PullRequest) => {
         </Flex>
       </Flex>
       <Flex direction="column" bg={boxBg} px={5}>
+        
         <HStack py="6px">
           <Text color="muted">
             <Icon as={BsGithub} color="blue.500" mr={2} />
           </Text>
           <Text color="muted">{pull.repository?.nameWithOwner}</Text>
         </HStack>
+        
         <HStack py="6px">
           <Text color="muted">
             <Icon as={BiGitPullRequest} color="blue.500" mr={2} />
@@ -99,18 +101,7 @@ const CheerCard = (props: PullRequest) => {
           <Text color="muted">#HacktoberFest2022</Text>
         </HStack>
         <Divider py={6}></Divider>
-        <Flex justify="center" py={6}>
-          <Button
-            as="a"
-            leftIcon={<MdIosShare fontWeight={"bold"} />}
-            colorScheme="teal"
-            variant="solid"
-            fontSize={"18px"}
-            onClick={() => downloadPNG()}
-          >
-            Share
-          </Button>
-        </Flex>
+        
       </Flex>
     </Box>
   );
