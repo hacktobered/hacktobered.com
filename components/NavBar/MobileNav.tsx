@@ -12,11 +12,13 @@ import {
   useFocusOnShow,
 } from "@chakra-ui/react";
 import { HTMLMotionProps, Variants, motion } from "framer-motion";
+import { signOut } from "next-auth/react";
 
 import {
   HiBookOpen,
   HiOutlineMenu,
   HiOutlineX,
+  HiOutlineLogout,
   HiQuestionMarkCircle,
 } from "react-icons/hi";
 import { FocusLock } from "@chakra-ui/focus-lock";
@@ -136,6 +138,9 @@ export const MobileNav = () => {
               <SimpleGrid as="nav" gap="6" mt="8" columns={{ base: 1, sm: 2 }}>
                 <NavLink.Mobile href="/" icon={HiBookOpen}>
                   Hacktobered
+                </NavLink.Mobile>
+                <NavLink.Mobile onClick={signOut} icon={HiOutlineLogout}>
+                  Sign Out
                 </NavLink.Mobile>
               </SimpleGrid>
             </Box>

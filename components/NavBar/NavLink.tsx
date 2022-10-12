@@ -32,15 +32,17 @@ const DesktopNavLink = (props: DesktopNavLinkProps) => {
 interface MobileNavLinkProps {
   icon: React.ElementType;
   children: React.ReactNode;
+  onClick?: () => void;
   href?: string;
 }
 
 const MobileNavLink = (props: MobileNavLinkProps) => {
-  const { icon, children, href } = props;
+  const { icon, children, href, onClick } = props;
   return (
     <Flex
       as="a"
       href={href}
+      onClick={onClick}
       m="-3"
       p="3"
       align="center"
