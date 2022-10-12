@@ -2,11 +2,10 @@ import * as React from "react";
 import { Center, Divider, Text } from "@chakra-ui/react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { OwnedRepository } from "../types/OwnedRepoResults";
+import { OwnedRepository } from "../../types/OwnedRepoResults";
 import { RepositoriesList } from "./RepositoriesList";
-import { SearchResults } from "../types/SearchResults";
-import { UserCardPropType } from "../types/UserCardPropType";
-import { apiWrapper } from "../apiWrapper";
+import { UserCardPropType } from "../../types/UserCardPropType";
+import { apiWrapper } from "../../apiWrapper";
 
 export const OwnedReposSection = (props: UserCardPropType) => {
   const [reposData, setReposData] = useState<OwnedRepository[]>();
@@ -29,9 +28,10 @@ export const OwnedReposSection = (props: UserCardPropType) => {
     <>
       {reposData && reposData.length && (
         <Text mt={4} fontWeight={"400"}>
-          🎉🎉🎉 {reposData.length} Repositories found
+          🎉🎉🎉 Here are your {reposData.length} public repos
         </Text>
       )}
+      <Divider py={4} />
       <RepositoriesList repos={reposData} />
       {!reposData?.length && (
         <Center mt={4}>

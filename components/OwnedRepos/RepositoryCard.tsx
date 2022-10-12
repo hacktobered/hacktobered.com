@@ -17,7 +17,7 @@ import { BiGitPullRequest } from "react-icons/bi";
 import { BsGithub } from "react-icons/bs";
 import { MdIosShare } from "react-icons/md";
 import NextLink from "next/link";
-import { OwnedRepository } from "../types/OwnedRepoResults";
+import { OwnedRepository } from "../../types/OwnedRepoResults";
 
 export const RepositoryCard = (props: OwnedRepository) => {
   const repo = props;
@@ -28,9 +28,11 @@ export const RepositoryCard = (props: OwnedRepository) => {
           <Icon as={BsGithub} mr={2} fontWeight="medium" color="emphasized" />
           {repo.name}
         </Text>
-        <Box fontSize="sm">
-          <Text noOfLines={2}>{repo.description}</Text>
-        </Box>
+        {repo.description && (
+          <Box fontSize="md">
+            <Text noOfLines={2}>{repo.description}</Text>
+          </Box>
+        )}
         <Flex justify="space-between">
           <NextLink href={repo.url} target="_blank" passHref>
             <Button

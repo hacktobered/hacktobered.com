@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { BsGithub, BsGlobe } from "react-icons/bs";
 import { MdEmail, MdLocationPin } from "react-icons/md";
-import { Card } from "./Card";
+import { Card } from "./common/Card";
 import { GoVerified } from "react-icons/go";
 import { UserCardPropType } from "../types/UserCardPropType";
 import { UserDetails } from "../types/UserDetails";

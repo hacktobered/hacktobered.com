@@ -1,5 +1,5 @@
 import * as React from "react";
-import { PullRequestsSection } from "./../PullRequestsSection";
+import { PullRequestsSection } from "./../PullRequests/PullRequestsSection";
 import { Text } from "@chakra-ui/react";
 import { UserCardPropType } from "../../types/UserCardPropType";
 

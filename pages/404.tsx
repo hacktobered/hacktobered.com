@@ -3,16 +3,11 @@ import { Box, Button, Flex, Img, Stack, Text } from "@chakra-ui/react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { BsArrowRightCircleFill } from "react-icons/bs";
-import { Card } from "../components/Card";
+import { Card } from "../components/common/Card";
 import { LoginComponent } from "../components/LoginComponent";
 import { NavBar } from "../components/NavBar";
 import NextLink from "next/link";
 import type { NextPage } from "next";
-
-import { PullRequestsSection } from "../components/PullRequestsSection";
-import { UserCard } from "../components/UserCard";
-import { UserDetails } from "../types/UserDetails";
-import { apiWrapper } from "../apiWrapper";
 
 const Custom404: NextPage = () => (
   <>

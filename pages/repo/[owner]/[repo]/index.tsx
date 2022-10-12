@@ -2,13 +2,13 @@ import * as React from "react";
 import {
   BasicCard,
   CheerCard,
-} from "../../../../components/PullRequestDetailCards";
+} from "../../../../components/PullRequests/PullRequestDetailCards";
 import { BiChevronRight, BiGitPullRequest } from "react-icons/bi";
 import { Box, Container, Text } from "@chakra-ui/react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { BreadCrumbs } from "../../../../components/BreadCrumbs";
-import { Card } from "../../../../components/Card";
+import { Card } from "../../../../components/common/Card";
 import { LoginComponent } from "../../../../components/LoginComponent";
 import { NavBar } from "../../../../components/NavBar";
 import type { NextPage } from "next";
