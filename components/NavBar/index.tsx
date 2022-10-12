@@ -8,11 +8,11 @@ import {
   useColorModeValue as mode,
 } from "@chakra-ui/react";
 import { signIn, signOut, useSession } from "next-auth/react";
-import Hacktober from '../../public/Hacktobered.png'
-import Image from 'next/image'
+import Hacktobered from "./../../public/favicon-32x32.png";
+import Image from "next/image";
 import Link from "next/link";
 import { MobileNav } from "./MobileNav";
-import Nav from '../../styles/NavBar.module.css';
+import Nav from "../../styles/NavBar.module.css";
 import { NavLink } from "./NavLink";
 
 export const NavBar = () => {
@@ -25,11 +25,12 @@ export const NavBar = () => {
             <HStack spacing="8">
               <Box as="a" href="#" rel="home">
                 <Link passHref href="/">
-                  <div className={Nav.lo}><Image 
-                  className={Nav.i}
-                  src={Hacktober}
-                  alt="Hacktobered Logo"
-                  />
+                  <div>
+                    <Image
+                      src={Hacktobered}
+                      className={Nav.logo}
+                      alt="Hacktobered Logo"
+                    />
                   </div>
                 </Link>
               </Box>
