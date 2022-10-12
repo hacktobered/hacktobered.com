@@ -1,5 +1,15 @@
 import * as React from "react";
-import { Box, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Stack,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
+} from "@chakra-ui/react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { Card } from "../components/Card";
@@ -37,7 +47,26 @@ const Profile: NextPage = () => {
             <>
               <UserCard user={userDetails} />
               <Card mt={6}>
-                <PullRequestsSection user={userDetails} />
+                <Stack spacing="16">
+                  <Tabs variant="enclosed" size={"md"}>
+                    <TabList>
+                      <Tab>Contributor</Tab>
+                      <Tab>Maintainer</Tab>
+                      <Tab>Community</Tab>
+                    </TabList>
+                    <TabPanels>
+                      <TabPanel>
+                        <PullRequestsSection user={userDetails} />
+                      </TabPanel>
+                      <TabPanel>
+                        <p>Maintainer!</p>
+                      </TabPanel>
+                      <TabPanel>
+                        <p>Community!</p>
+                      </TabPanel>
+                    </TabPanels>
+                  </Tabs>
+                </Stack>
               </Card>
             </>
           ) : (
