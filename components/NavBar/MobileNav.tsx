@@ -15,6 +15,7 @@ import { HTMLMotionProps, Variants, motion } from "framer-motion";
 
 import {
   HiBookOpen,
+  HiOutlineLogout,
   HiOutlineMenu,
   HiOutlineX,
   HiQuestionMarkCircle,
@@ -23,6 +24,7 @@ import { FocusLock } from "@chakra-ui/focus-lock";
 import Link from "next/link";
 import { NavLink } from "./NavLink";
 import { RemoveScroll } from "react-remove-scroll";
+import { signOut } from "next-auth/react";
 
 const variants: Variants = {
   show: {
@@ -136,6 +138,9 @@ export const MobileNav = () => {
               <SimpleGrid as="nav" gap="6" mt="8" columns={{ base: 1, sm: 2 }}>
                 <NavLink.Mobile href="/" icon={HiBookOpen}>
                   Hacktobered
+                </NavLink.Mobile>
+                <NavLink.Mobile onClick={signOut} icon={HiOutlineLogout}>
+                  Sign Out
                 </NavLink.Mobile>
               </SimpleGrid>
             </Box>
