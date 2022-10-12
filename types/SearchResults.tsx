@@ -1,8 +1,8 @@
-import { PREntry } from "./PREntry";
+import { PullRequestEntry } from "./PullRequestEntry";
 
 export type SearchResults = {
   issueCount: number;
-  edges: PREntry[];
+  edges: PullRequestEntry[];
 };
 
 export type SearchResultsDataWrapper = {

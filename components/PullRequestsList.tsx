@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Box, Center, Stack, StackDivider } from "@chakra-ui/react";
-import { PREntry } from "../types/PREntry";
+import { PullRequestEntry } from "../types/PullRequestEntry";
 import { PullRequestCard } from "./PullRequestCard";
 
 type PRListProps = {
-  pulls: PREntry[] | undefined;
+  pulls: PullRequestEntry[] | undefined;
 };
 
 export const PullRequestsList = (props: PRListProps) => {

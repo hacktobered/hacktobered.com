@@ -18,7 +18,7 @@ import { BiGitPullRequest } from "react-icons/bi";
 import { BsGithub } from "react-icons/bs";
 import { MdIosShare } from "react-icons/md";
 import NextLink from "next/link";
-import { PullRequest } from "../../types/PREntry";
+import { PullRequest } from "../../types/PullRequest";
 import download from "downloadjs";
 import { useRef } from "react";
 
