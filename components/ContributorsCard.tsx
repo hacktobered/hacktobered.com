@@ -108,7 +108,7 @@ const ContributorsCard = (props: ContributorCardProps) => {
             fontSize={"18px"}
             onClick={() => downloadPNG()}
           >
-            Share
+            Share (Max 30)
           </Button>
         </Flex>
       </Stack>

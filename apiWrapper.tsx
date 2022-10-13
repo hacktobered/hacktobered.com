@@ -3,6 +3,7 @@ import {
   OwnedRepository,
 } from "./types/OwnedRepoResults";
 import { SearchResults, SearchResultsDataWrapper } from "./types/SearchResults";
+import { ContributedRepositoriesData } from "./types/ContributedRepositoriesData";
 import { PullRequest } from "./types/PullRequest";
 import { RepositoryPullRequests } from "./types/RepoPullRequests";
 import { graphql } from "@octokit/graphql";
@@ -120,6 +121,70 @@ const fetchRepoPullRequests = async (
   const search: PullRequest[] | undefined =
     searchData.repository?.pullRequests?.nodes;
   return search;
+};
+
+const fetchContributedRepositories = async (accessToken: string) => {
+  const USER_REPOS_QUERY = `
+  fragment Repos on RepositoryConnection {
+    nodes {
+      # Metadata
+      name
+      url
+      description
+  
+      # Dates
+        
+      # Counts
+      stargazers {
+        totalCount
+      }
+      forkCount
+      defaultBranchRef {
+        commits: target {
+          ... on Commit {
+            history(first: 1) {
+              totalCount
+            }
+          }
+        }
+      }
+     
+      repositoryTopics(first: 10) {
+        nodes {
+          topic {
+            name
+            stargazers {
+              totalCount
+            }
+            viewerHasStarred
+          }
+          url
+        }
+      }
+    }
+  }
+{
+  viewer {
+    repositoriesContributedTo(
+      first: 100
+      contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]
+    ) {
+      ...Repos
+    }
+  }
+} 
+`;
+  const searchData: ContributedRepositoriesData = await graphql(
+    USER_REPOS_QUERY,
+    {
+      headers: {
+        authorization: `token ${accessToken}`,
+      },
+    }
+  );
+  const contributedRepos: OwnedRepository[] | undefined =
+    searchData.viewer?.repositoriesContributedTo.nodes;
+  return contributedRepos;
 };
 
 const fetchUserMaintainedRepositories = async (
@@ -240,6 +305,7 @@ const fetchPullRequestDetails = async (
 };
 
 export const apiWrapper = {
+  fetchContributedRepositories,
   fetchRepoContributors,
   fetchPullRequestDetails,
   fetchRepoPullRequests,
