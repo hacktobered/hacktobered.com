@@ -68,7 +68,7 @@ Facing any issues? Feel free to open a ticket.
 - Fork the repo to your Github.<br/>
 
 - Clone the Repo by going to your local Git Client in a particular local folder in your local machine by using this command with your forked repository link in place of below given link: <br/>
-  `git clone https://github.com/hacktobered/hacktobered.com`
+  `git clone https://github.com/<please write your git username here>/hacktobered.com.git`
 - Create a branch using below command.
   `git branch <your branch name>`
 - Checkout to your branch.
@@ -76,7 +76,7 @@ Facing any issues? Feel free to open a ticket.
 - Add your code in your local machine folder.
   `git add . `
 - Commit your changes.
-  `git commit -m"<add your message here>"`
+  `git commit -m "<add your message here>"`
 - Push your changes.
   `git push --set-upstream origin <your branch name>`
 
