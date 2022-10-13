@@ -38,12 +38,12 @@ export const RepositoryCard = (props: OwnedRepository) => {
           >
             <Button
               as="a"
-              leftIcon={<BiGitPullRequest fontWeight={"bold"} />}
+              leftIcon={<MdIosShare fontWeight={"bold"} />}
               colorScheme="teal"
               variant="solid"
               fontSize={"18px"}
             >
-              View PRs
+              Share
             </Button>
           </NextLink>
         </Flex>

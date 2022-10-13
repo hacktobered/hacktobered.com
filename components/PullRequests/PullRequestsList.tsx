@@ -9,7 +9,7 @@ type PRListProps = {
 
 export const PullRequestsList = (props: PRListProps) => {
   return (
-    <Center maxW="sm" mx="auto" py={"4"}>
+    <Center maxW="lg" mx="auto" py={"4"}>
       <Box py="4">
         <Stack divider={<StackDivider />} spacing="8">
           {props.pulls &&
