@@ -16,15 +16,15 @@ import {
 } from "@chakra-ui/react";
 import { BsGithub, BsGlobe } from "react-icons/bs";
 import { MdEmail, MdLocationPin } from "react-icons/md";
-import { Card } from "./common/Card";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { apiWrapper } from "../apiWrapper";
+import { Card } from "./common/Card";
+import { GoVerified } from "react-icons/go";
 import { NoPullRequestCard } from "./NoPullRequestCard";
 import { SearchResults } from "../types/SearchResults";
-import { GoVerified } from "react-icons/go";
 import { UserCardPropType } from "../types/UserCardPropType";
 import { UserDetails } from "../types/UserDetails";
+import { apiWrapper } from "../apiWrapper";
 
 export const UserCard = ({ user }: UserCardPropType) => {
 
