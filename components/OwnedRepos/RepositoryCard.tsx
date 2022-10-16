@@ -1,18 +1,5 @@
 import * as React from "react";
-import {
-  Avatar,
-  AvatarBadge,
-  Box,
-  Button,
-  Center,
-  Flex,
-  HStack,
-  Icon,
-  Stack,
-  StackDivider,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Icon, Stack, Text } from "@chakra-ui/react";
 import { BiGitPullRequest } from "react-icons/bi";
 import { BsGithub } from "react-icons/bs";
 import { MdIosShare } from "react-icons/md";
@@ -22,7 +9,7 @@ import { OwnedRepository } from "../../types/OwnedRepoResults";
 export const RepositoryCard = (props: OwnedRepository) => {
   const repo = props;
   return (
-    <Stack fontSize="md" spacing="4">
+    <Stack minW={{ base: "none", lg: "lg" }} fontSize="md" spacing="4">
       <Stack direction="column" justify="space-between" spacing="4">
         <Text color="muted">
           <Icon as={BsGithub} mr={2} fontWeight="medium" color="emphasized" />
@@ -51,12 +38,12 @@ export const RepositoryCard = (props: OwnedRepository) => {
           >
             <Button
               as="a"
-              leftIcon={<BiGitPullRequest fontWeight={"bold"} />}
+              leftIcon={<MdIosShare fontWeight={"bold"} />}
               colorScheme="teal"
               variant="solid"
               fontSize={"18px"}
             >
-              View PRs
+              Share
             </Button>
           </NextLink>
         </Flex>

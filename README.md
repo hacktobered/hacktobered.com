@@ -59,12 +59,28 @@ Facing any issues? Feel free to open a ticket.
 
 ## How to contribute
 
-- Fork this repo.
-- Open an issue. Get it triaged/approved first if in doubt.
-- If the issue already exists - You can directly send a PR - No need of asking "assign me this task".
-- Please adhere to our milestone timelines.
-- Read [CONTRIBUTING.md](https://github.com/hacktobered/hacktobered.com/blob/main/CONTRIBUTING.md)
-- **Send PRs against dev branch only.**
+- Drop a :star: on the Github repository (optional)<br/>
+
+- Before Contribute Please read [CONTRIBUTING.md](https://github.com/hacktobered/hacktobered.com/blob/main/CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](https://github.com/hacktobered/hacktobered.com/blob/main/CODE_OF_CONDUCT.md)
+
+- Create an issue of the project or a feature you would like to add in the project and get the task assigned for youself.(Issue can be any bug fixes or any feature you want to add in this project).
+
+- Fork the repo to your Github.<br/>
+
+- Clone the Repo by going to your local Git Client in a particular local folder in your local machine by using this command with your forked repository link in place of below given link: <br/>
+  `git clone https://github.com/<please write your git username here>/hacktobered.com.git`
+- Create a branch using below command.
+  `git branch <your branch name>`
+- Checkout to your branch.
+  `git checkout <your branch name>`
+- Add your code in your local machine folder.
+  `git add . `
+- Commit your changes.
+  `git commit -m "<add your message here>"`
+- Push your changes.
+  `git push --set-upstream origin <your branch name>`
+
+- Make a pull request! (compare your branch with the owner main branch)
 
 ## Tech Stack:
 
@@ -72,3 +88,18 @@ Facing any issues? Feel free to open a ticket.
 - [Chakra UI](https://chakra-ui.com/) component library
 - [Next-Auth](https://next-auth.js.org/)
 - (Optional) MongoDB - if you want to save user details.
+
+
+# Our Amazing Contributors
+<br>
+<div align="center">
+
+<a href="https://github.com/hacktobered/hacktobered.com/contributors">
+  <img src="https://contrib.rocks/image?repo=hacktobered/hacktobered.com&&max=817" />
+</a>
+</div>
+
+<br>
+<div align="center">
+<h3>Show some ❤️ by starring this awesome repository!</h3>
+</div>

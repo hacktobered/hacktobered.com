@@ -9,7 +9,7 @@ type RepoListProps = {
 
 export const RepositoriesList = (props: RepoListProps) => {
   return (
-    <Center maxW="sm" mx="auto" py={"4"}>
+    <Center maxW="lg" mx="auto" py={"4"}>
       <Box py="4">
         <Stack divider={<StackDivider />} spacing="8">
           {props.repos &&

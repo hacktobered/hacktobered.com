@@ -12,9 +12,8 @@ export const OwnedReposSection = (props: UserCardPropType) => {
   const { data: session, status } = useSession();
 
   async function fetchMaintainedRepositories(accessToken: any, login: string) {
-    const reposDataResponse = await apiWrapper.fetchUserMaintainedRepositories(
-      accessToken,
-      login
+    const reposDataResponse = await apiWrapper.fetchContributedRepositories(
+      accessToken
     );
     setReposData(reposDataResponse);
   }
@@ -28,7 +27,7 @@ export const OwnedReposSection = (props: UserCardPropType) => {
     <>
       {reposData && reposData.length && (
         <Text mt={4} fontWeight={"400"}>
-          🎉🎉🎉 Here are your {reposData.length} public repos
+          🎉🎉🎉 Here are {reposData.length} public repos where you contributed!
         </Text>
       )}
       <Divider py={4} />

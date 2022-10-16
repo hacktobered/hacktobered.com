@@ -55,8 +55,8 @@ const Profile: NextPage = () => {
                 <Stack spacing="16">
                   <Tabs variant="enclosed" size={"md"}>
                     <TabList>
-                      <Tab>Contributor</Tab>
-                      <Tab>Maintainer</Tab>
+                      <Tab>Pull Reqs</Tab>
+                      <Tab>Repositories</Tab>
                       <Tab>Community</Tab>
                     </TabList>
                     <TabPanels>

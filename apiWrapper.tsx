@@ -3,11 +3,29 @@ import {
   OwnedRepository,
 } from "./types/OwnedRepoResults";
 import { SearchResults, SearchResultsDataWrapper } from "./types/SearchResults";
+import { ContributedRepositoriesData } from "./types/ContributedRepositoriesData";
 import { PullRequest } from "./types/PullRequest";
+import { RepositoryPullRequests } from "./types/RepoPullRequests";
 import { graphql } from "@octokit/graphql";
 
 const fetchUserDetails = async (accessToken: string) => {
   let url = `https://api.github.com/user`;
+  return fetch(url, {
+    method: "get",
+    headers: {
+      Authorization: `token ${accessToken}`,
+    },
+  }).then((response) => {
+    return response.json();
+  });
+};
+
+const fetchRepoContributors = async (
+  accessToken: string,
+  owner: string,
+  repo: string
+) => {
+  let url = `https://api.github.com/repos/${owner}/${repo}/contributors`;
   return fetch(url, {
     method: "get",
     headers: {
@@ -56,6 +74,117 @@ const fetchUserPullRequests = async (accessToken: string, login: string) => {
   );
   const search: SearchResults | undefined = searchData.search;
   return search;
+};
+
+const fetchRepoPullRequests = async (
+  accessToken: string,
+  owner: string,
+  repo: string
+) => {
+  const PULL_REQUEST_QUERY = `
+  {
+    repository(owner: "**OWNER**", name: "**REPO**") {
+      pullRequests(first: 20) {
+        nodes {
+          number
+          id
+          title
+          repository {
+            nameWithOwner
+            description
+          }
+          createdAt
+          mergedAt
+          changedFiles
+          additions
+          deletions
+          url
+          state
+          author {
+            avatarUrl
+            login
+            url
+          }
+        }
+      }
+    }
+  }
+`;
+  const searchData: RepositoryPullRequests = await graphql(
+    PULL_REQUEST_QUERY.replace("**OWNER**", owner).replace("**REPO**", repo),
+    {
+      headers: {
+        authorization: `token ${accessToken}`,
+      },
+    }
+  );
+  const search: PullRequest[] | undefined =
+    searchData.repository?.pullRequests?.nodes;
+  return search;
+};
+
+const fetchContributedRepositories = async (accessToken: string) => {
+  const USER_REPOS_QUERY = `
+  fragment Repos on RepositoryConnection {
+    nodes {
+      # Metadata
+      name
+      url
+      description
+  
+      # Dates
+        
+      # Counts
+      stargazers {
+        totalCount
+      }
+      forkCount
+      defaultBranchRef {
+        commits: target {
+          ... on Commit {
+            history(first: 1) {
+              totalCount
+            }
+          }
+        }
+      }
+     
+      repositoryTopics(first: 10) {
+        nodes {
+          topic {
+            name
+            stargazers {
+              totalCount
+            }
+            viewerHasStarred
+          }
+          url
+        }
+      }
+    }
+  }
+{
+  viewer {
+    repositoriesContributedTo(
+      first: 100
+      contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]
+    ) {
+      ...Repos
+    }
+  }
+} 
+`;
+  const searchData: ContributedRepositoriesData = await graphql(
+    USER_REPOS_QUERY,
+    {
+      headers: {
+        authorization: `token ${accessToken}`,
+      },
+    }
+  );
+  const contributedRepos: OwnedRepository[] | undefined =
+    searchData.viewer?.repositoriesContributedTo.nodes;
+  return contributedRepos;
 };
 
 const fetchUserMaintainedRepositories = async (
@@ -176,7 +305,10 @@ const fetchPullRequestDetails = async (
 };
 
 export const apiWrapper = {
+  fetchContributedRepositories,
+  fetchRepoContributors,
   fetchPullRequestDetails,
+  fetchRepoPullRequests,
   fetchUserDetails,
   fetchUserMaintainedRepositories,
   fetchUserPullRequests,

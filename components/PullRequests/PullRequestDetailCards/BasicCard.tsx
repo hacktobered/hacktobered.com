@@ -38,6 +38,8 @@ const BasicCard = (props: PullRequest) => {
     <Stack fontSize="sm" spacing="4" backgroundColor="white">
       <Stack
         id="domEl"
+        borderWidth="1px"
+        borderRadius="lg"
         ref={domEl}
         direction="column"
         justify="space-between"
