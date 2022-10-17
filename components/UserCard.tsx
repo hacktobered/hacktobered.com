@@ -2,6 +2,7 @@ import * as React from "react";
 import {
   Avatar,
   AvatarBadge,
+  Badge,
   Box,
   Center,
   HStack,
@@ -15,14 +16,40 @@ import {
 } from "@chakra-ui/react";
 import { BsGithub, BsGlobe } from "react-icons/bs";
 import { MdEmail, MdLocationPin } from "react-icons/md";
+import { signIn, signOut, useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 import { Card } from "./common/Card";
 import { GoVerified } from "react-icons/go";
+import { NoPullRequestCard } from "./NoPullRequestCard";
+import { SearchResults } from "../types/SearchResults";
 import { UserCardPropType } from "../types/UserCardPropType";
 import { UserDetails } from "../types/UserDetails";
+import { apiWrapper } from "../apiWrapper";
 
 export const UserCard = ({ user }: UserCardPropType) => {
+
   const avatarColor = useColorModeValue("white", "gray.700");
   const iconColor = useColorModeValue("blue.500", "blue.200");
+
+  const [searchData, setSearchData] = useState<SearchResults>();
+  const { data: session, status } = useSession();
+
+  async function fetchPR(accessToken: any, login: string) {
+    const pullData = await apiWrapper.fetchUserPullRequests(accessToken, login);
+    if (pullData) {
+      setSearchData({
+        issueCount: pullData.issueCount,
+        edges: pullData.edges,
+      });
+    }
+  }
+
+  useEffect(() => {
+    if (session) {
+      fetchPR(session.accessToken, user.login);
+    }
+  }, [session, user.login]);
+
   return (
     <Card>
       <Stack
@@ -93,6 +120,9 @@ export const UserCard = ({ user }: UserCardPropType) => {
               )}
             </Wrap>
           </Stack>
+          {!searchData?.issueCount && (
+              <NoPullRequestCard></NoPullRequestCard>
+            )}
         </Box>
       </Stack>
     </Card>
