@@ -1,5 +1,15 @@
 import * as React from "react";
-import { Center, Divider, Text } from "@chakra-ui/react";
+import {
+  Center,
+  Divider,
+  HStack,
+  Heading,
+  Link,
+  ListItem,
+  Stack,
+  Text,
+  UnorderedList,
+} from "@chakra-ui/react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { PullRequestsList } from "./PullRequestsList";
@@ -35,9 +45,40 @@ export const PullRequestsSection = (props: UserCardPropType) => {
       )}
       <PullRequestsList pulls={searchData?.edges} />
       {!searchData?.issueCount && (
-        <Center mt={4}>
-          No PRs yet! But its never late for some coffee and code!
-        </Center>
+        <Stack spacing={6}>
+          <Heading as="h5" size="md">
+            No PRs yet! But its never late for some coffee and code!
+          </Heading>
+          <Text as="em" fontSize="14px">
+            Note: keep in mind that there are many levels of contribution
+            (beginner, medium, hard) so everybody is able to contribute
+          </Text>
+          <Text>
+            To contribute for open-source projects through the{" "}
+            <Link color="blue" href="https://hacktoberfest.com/">
+              Hacktoberfest
+            </Link>{" "}
+            all you have to do is access some of the links provided below.
+          </Text>
+          <UnorderedList pl={6}>
+            <ListItem>
+              <Link href="https://hacktoberfest.com/">
+                Oficial Hacktoberfest page
+              </Link>
+            </ListItem>
+            <ListItem>
+              <Link href="https://dev.to/github/how-to-get-ready-for-hacktoberfest-2022-2ck2">
+                How to get ready for Hacktoberfest 2022
+              </Link>
+            </ListItem>
+            <ListItem>
+              <Link href="https://www.freecodecamp.org/news/how-anyone-can-participate-in-hacktoberfest/">
+                How to Participate in Hacktoberfest – Even if You Don&apos;t
+                Write Code
+              </Link>
+            </ListItem>
+          </UnorderedList>
+        </Stack>
       )}
     </>
   );
