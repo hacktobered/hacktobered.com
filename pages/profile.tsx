@@ -1,12 +1,27 @@
 import * as React from "react";
-import { Box, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Stack,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Tag,
+  Text,
+} from "@chakra-ui/react";
+import {
+  CommunitySection,
+  ContributorSection,
+  MaintainerSection,
+} from "../components/ProfileSections";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { Card } from "../components/Card";
+import { Card } from "../components/common/Card";
 import { LoginComponent } from "../components/LoginComponent";
 import { NavBar } from "../components/NavBar";
 import type { NextPage } from "next";
-import { PullRequestsSection } from "../components/PullRequestsSection";
 import { UserCard } from "../components/UserCard";
 import { UserDetails } from "../types/UserDetails";
 import { apiWrapper } from "../apiWrapper";
@@ -37,7 +52,26 @@ const Profile: NextPage = () => {
             <>
               <UserCard user={userDetails} />
               <Card mt={6}>
-                <PullRequestsSection user={userDetails} />
+                <Stack spacing="16">
+                  <Tabs variant="enclosed" size={"md"}>
+                    <TabList>
+                      <Tab>Pull Reqs</Tab>
+                      <Tab>Repositories</Tab>
+                      <Tab>Community</Tab>
+                    </TabList>
+                    <TabPanels>
+                      <TabPanel>
+                        <ContributorSection user={userDetails} />
+                      </TabPanel>
+                      <TabPanel>
+                        <MaintainerSection user={userDetails} />
+                      </TabPanel>
+                      <TabPanel>
+                        <CommunitySection user={userDetails} />
+                      </TabPanel>
+                    </TabPanels>
+                  </Tabs>
+                </Stack>
               </Card>
             </>
           ) : (
