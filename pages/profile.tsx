@@ -58,7 +58,6 @@ const Profile: NextPage = () => {
                     <TabList>
                       <Tab>Pull Reqs</Tab>
                       <Tab>Repositories</Tab>
-                      <Tab>Community</Tab>
                     </TabList>
                     <TabPanels>
                       <TabPanel>
@@ -66,9 +65,6 @@ const Profile: NextPage = () => {
                       </TabPanel>
                       <TabPanel>
                         <MaintainerSection user={userDetails} />
-                      </TabPanel>
-                      <TabPanel>
-                        <CommunitySection user={userDetails} />
                       </TabPanel>
                     </TabPanels>
                   </Tabs>

@@ -7,7 +7,7 @@ const ContributorSection = (props: UserCardPropType) => {
   return (
     <>
       <Text py="4px" fontWeight={"600"}>
-        Welcome Hacker!
+        Welcome {props.user.login}
       </Text>
       <PullRequestsSection {...props} />
     </>
