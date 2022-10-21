@@ -18,7 +18,6 @@ import {
 } from "../components/ProfileSections";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { Card } from "../components/Card";
 import { Footer } from "../components/Footer";
 import { LoginComponent } from "../components/LoginComponent";
 import { NavBar } from "../components/NavBar";
@@ -26,6 +25,7 @@ import type { NextPage } from "next";
 import { UserCard } from "../components/UserCard";
 import { UserDetails } from "../types/UserDetails";
 import { apiWrapper } from "../apiWrapper";
+import { Card } from "../components/common/Card";
 
 const Profile: NextPage = () => {
   const { data: session, status } = useSession();
