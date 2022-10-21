@@ -1,28 +1,15 @@
 import * as React from "react";
-import {
-  Avatar,
-  AvatarBadge,
-  Box,
-  Button,
-  Center,
-  Flex,
-  HStack,
-  Icon,
-  Stack,
-  StackDivider,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Icon, Stack, Text } from "@chakra-ui/react";
 import { BiGitPullRequest } from "react-icons/bi";
 import { BsGithub } from "react-icons/bs";
 import { MdIosShare } from "react-icons/md";
 import NextLink from "next/link";
-import { PullRequest } from "../types/PREntry";
+import { PullRequest } from "../../types/PullRequest";
 
 export const PullRequestCard = (props: PullRequest) => {
   const pull = props;
   return (
-    <Stack fontSize="sm" px="4" spacing="4">
+    <Stack minW={{ base: "none", lg: "lg" }} fontSize="sm" spacing="4">
       <Stack direction="column" justify="space-between" spacing="4">
         <Text color="muted">
           <Icon as={BsGithub} color="blue.500" mr={2} />

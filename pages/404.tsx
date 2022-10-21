@@ -10,11 +10,6 @@ import { NavBar } from "../components/NavBar";
 import NextLink from "next/link";
 import type { NextPage } from "next";
 
-import { PullRequestsSection } from "../components/PullRequestsSection";
-import { UserCard } from "../components/UserCard";
-import { UserDetails } from "../types/UserDetails";
-import { apiWrapper } from "../apiWrapper";
-
 const Custom404: NextPage = () => (
   <>
     <NavBar />

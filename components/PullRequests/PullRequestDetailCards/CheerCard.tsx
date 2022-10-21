@@ -15,12 +15,12 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { BsGithub, BsHeartFill } from "react-icons/bs";
 import { toPng, toSvg } from "html-to-image";
 import { BiGitPullRequest } from "react-icons/bi";
-import { BsGithub } from "react-icons/bs";
 import { MdIosShare } from "react-icons/md";
 import NextLink from "next/link";
-import { PullRequest } from "../../types/PREntry";
+import { PullRequest } from "../../../types/PullRequest";
 import download from "downloadjs";
 import { useRef } from "react";
 
@@ -111,6 +111,11 @@ const CheerCard = (props: PullRequest) => {
             Share
           </Button>
         </Flex>
+        <Box alignSelf={"center"} display={"flex"} fontSize="sm" mt={"10"}>
+          <Text mr={"1"}>made with</Text> 
+          <BsHeartFill fontSize="sm" color={"#DC143C"}/> 
+          <Text ml={"1"}>by hacktobered</Text>
+        </Box>
       </Flex>
     </Box>
   );

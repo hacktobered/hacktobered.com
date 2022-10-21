@@ -1,6 +1,5 @@
-export interface PREntry {
-  node: PullRequest;
-}
+import { Author } from "./Author";
+import { Repository } from "./Repository";
 
 export interface PullRequest {
   number: number;
@@ -15,15 +14,4 @@ export interface PullRequest {
   deletions: number;
   state: string;
   author: Author;
-}
-
-export interface Author {
-  avatarUrl: string;
-  login: string;
-  url: string;
-}
-
-export interface Repository {
-  nameWithOwner: string;
-  description?: string;
 }
