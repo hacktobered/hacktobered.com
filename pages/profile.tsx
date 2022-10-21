@@ -3,6 +3,7 @@ import { Box, Text } from "@chakra-ui/react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { Card } from "../components/Card";
+import { Footer } from "../components/Footer";
 import { LoginComponent } from "../components/LoginComponent";
 import { NavBar } from "../components/NavBar";
 import type { NextPage } from "next";
@@ -44,6 +45,7 @@ const Profile: NextPage = () => {
             <h1>Loading...</h1>
           )}
         </Box>
+        <Footer />
       </>
     );
   } else {
