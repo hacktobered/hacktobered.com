@@ -12,7 +12,8 @@ import {
 } from "@chakra-ui/react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { NoPullRequestsSection } from "./NoPullRequestsSection";
+import IamParticipating from "../IamParticipating";
+import { NoPullRequestsSection } from "../common/HacktoberFestSection";
 import { PullRequestsList } from "./PullRequestsList";
 import { SearchResults } from "../../types/SearchResults";
 import { UserCardPropType } from "../../types/UserCardPropType";
@@ -40,13 +41,26 @@ export const PullRequestsSection = (props: UserCardPropType) => {
   return (
     <>
       {!!searchData?.issueCount && (
-        <Text mt={4} fontWeight={"400"}>
-          🎉🎉🎉 {searchData?.issueCount} public Pull Requests found
-        </Text>
+        <>
+          <Text mt={4} fontWeight={"400"}>
+            🎉🎉🎉 {searchData?.issueCount} public Pull Requests found
+          </Text>
+          <Divider py={4} />
+        </>
       )}
-      <Divider py={4} />
       <PullRequestsList pulls={searchData?.edges} />
-      {!searchData?.issueCount && <NoPullRequestsSection />}
+      {!searchData?.issueCount && (
+        <Stack py={4} spacing={6}>
+          <Heading as="h5" size="md">
+            No Pull requests yet? It&apos;s never too late for some coffee and
+            code!
+          </Heading>
+          <Text>
+            There are many levels of contributions (beginner, medium, hard), and
+            everybody can contribute!
+          </Text>
+        </Stack>
+      )}
     </>
   );
 };
