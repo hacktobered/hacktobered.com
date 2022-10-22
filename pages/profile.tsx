@@ -1,15 +1,14 @@
 import * as React from "react";
 import {
   Box,
-  Container,
+  Center,
+  HStack,
   Stack,
   Tab,
   TabList,
   TabPanel,
   TabPanels,
   Tabs,
-  Tag,
-  Text,
 } from "@chakra-ui/react";
 import {
   CommunitySection,
@@ -19,7 +18,8 @@ import {
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { Card } from "../components/common/Card";
-import { Footer } from "../components/Footer";
+import { Footer } from "../components/common/Footer";
+import { HalloweenLoading } from "../components/common/HalloweenLoading";
 import { LoginComponent } from "../components/LoginComponent";
 import { NavBar } from "../components/NavBar";
 import type { NextPage } from "next";
@@ -72,9 +72,10 @@ const Profile: NextPage = () => {
               </Card>
             </>
           ) : (
-            <h1>Loading...</h1>
+            <HalloweenLoading />
           )}
         </Box>
+
         <Footer />
       </>
     );

@@ -3,7 +3,7 @@ import { Box, Button, Flex, Img, Stack, Text } from "@chakra-ui/react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { BsArrowRightCircleFill } from "react-icons/bs";
-import { Footer } from "../components/Footer";
+import { Footer } from "../components/common/Footer";
 import { LoginComponent } from "../components/LoginComponent";
 import { NavBar } from "../components/NavBar";
 import NextLink from "next/link";

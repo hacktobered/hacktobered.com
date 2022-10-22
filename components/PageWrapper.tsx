@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Box, BoxProps, useColorModeValue } from "@chakra-ui/react";
-import { Footer } from "./Footer";
+import { Footer } from "./common/Footer";
 import { NavBar } from "./NavBar";
 
 export const PageWrapper = (props: BoxProps) => (
