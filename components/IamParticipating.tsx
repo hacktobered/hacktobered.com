@@ -1,32 +1,23 @@
 import * as React from "react";
 import {
   Avatar,
-  AvatarBadge,
   Box,
   Button,
-  Center,
   Flex,
   HStack,
   Icon,
   Link,
   SimpleGrid,
   Stack,
-  StackDivider,
   Text,
   VStack,
-  Wrap,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { BsGithub, BsGlobe } from "react-icons/bs";
-import { toPng, toSvg } from "html-to-image";
-import { BiGitPullRequest } from "react-icons/bi";
-import { HiBadgeCheck } from "react-icons/hi";
+import { BsGithub } from "react-icons/bs";
 import { MdIosShare } from "react-icons/md";
-import { MdLocationPin } from "react-icons/md";
-import NextLink from "next/link";
-import { PullRequest } from "../types/PullRequest";
 import { UserCardPropType } from "../types/UserCardPropType";
 import download from "downloadjs";
+import { toPng } from "html-to-image";
 import { useRef } from "react";
 
 const IamParticipating = ({ user }: UserCardPropType) => {

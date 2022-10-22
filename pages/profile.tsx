@@ -1,8 +1,6 @@
 import * as React from "react";
 import {
   Box,
-  Center,
-  HStack,
   Stack,
   Tab,
   TabList,
@@ -11,7 +9,6 @@ import {
   Tabs,
 } from "@chakra-ui/react";
 import {
-  CommunitySection,
   ContributorSection,
   MaintainerSection,
 } from "../components/ProfileSections";
@@ -25,7 +22,6 @@ import IamParticipating from "../components/IamParticipating";
 import { LoginComponent } from "../components/LoginComponent";
 import { NavBar } from "../components/NavBar";
 import type { NextPage } from "next";
-import { UserCard } from "../components/UserCard";
 import { UserDetails } from "../types/UserDetails";
 import { apiWrapper } from "../apiWrapper";
 

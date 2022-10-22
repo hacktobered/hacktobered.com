@@ -1,23 +1,11 @@
 import * as React from "react";
-import {
-  Center,
-  Divider,
-  HStack,
-  Heading,
-  Link,
-  ListItem,
-  Stack,
-  Text,
-  UnorderedList,
-} from "@chakra-ui/react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { Divider, Heading, Stack, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import IamParticipating from "../IamParticipating";
-import { NoPullRequestsSection } from "../common/HacktoberFestSection";
 import { PullRequestsList } from "./PullRequestsList";
 import { SearchResults } from "../../types/SearchResults";
 import { UserCardPropType } from "../../types/UserCardPropType";
 import { apiWrapper } from "../../apiWrapper";
+import { useSession } from "next-auth/react";
 
 export const PullRequestsSection = (props: UserCardPropType) => {
   const [searchData, setSearchData] = useState<SearchResults>();
