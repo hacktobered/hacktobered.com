@@ -1,7 +1,10 @@
 import * as React from "react";
 import {
   Box,
+  FormControl,
+  FormLabel,
   Stack,
+  Switch,
   Tab,
   TabList,
   TabPanel,
@@ -28,6 +31,7 @@ import { apiWrapper } from "../apiWrapper";
 const Profile: NextPage = () => {
   const { data: session, status } = useSession();
   const [userDetails, setUserDetails] = useState<UserDetails>();
+  const [completionStatus, setCompletionStatus] = useState(false);
 
   async function fetchData(accessToken: any) {
     const userData = await apiWrapper.fetchUserDetails(accessToken);
@@ -59,7 +63,22 @@ const Profile: NextPage = () => {
                     </TabList>
                     <TabPanels>
                       <TabPanel>
-                        <IamParticipating user={userDetails} />
+                        <FormControl mb={4} display="flex" alignItems="center">
+                          <Switch
+                            isChecked={completionStatus}
+                            onChange={() =>
+                              setCompletionStatus(!completionStatus)
+                            }
+                            id="completion-status"
+                          />
+                          <FormLabel ml={2} mb={0} htmlFor="completion-status">
+                            Completed #Hacktober
+                          </FormLabel>
+                        </FormControl>
+                        <IamParticipating
+                          completionStatus={completionStatus}
+                          user={userDetails}
+                        />
                         <HacktoberFestSection />
                       </TabPanel>
                       <TabPanel>
