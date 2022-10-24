@@ -15,12 +15,13 @@ import {
 } from "@chakra-ui/react";
 import { BsGithub } from "react-icons/bs";
 import { MdIosShare } from "react-icons/md";
-import { UserCardPropType } from "../types/UserCardPropType";
+import { UserDetails } from "../types/UserDetails";
 import download from "downloadjs";
 import { toPng } from "html-to-image";
 import { useRef } from "react";
+
 type IamParticipatingType = {
-  user: UserCardPropType;
+  user: UserDetails;
   completionStatus: boolean;
 };
 
