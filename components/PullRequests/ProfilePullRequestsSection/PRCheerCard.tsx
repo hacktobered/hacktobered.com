@@ -53,6 +53,9 @@ const PRCheerCard = (props: PullRequest) => {
           position="relative"
           bg={useColorModeValue("white", "gray.700")}
           shadow={{ md: "base" }}
+          p={5}
+          borderColor={"gray.100"}
+          borderWidth="1px"
         >
           <Flex bg={boxBg} alignItems="center" direction="column">
             <Image
