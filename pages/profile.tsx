@@ -25,10 +25,10 @@ import IamParticipating from "../components/IamParticipating";
 import { LoginComponent } from "../components/LoginComponent";
 import { NavBar } from "../components/NavBar";
 import type { NextPage } from "next";
+import { PageWrapper } from "../components/PageWrapper";
 import { ProfilePullRequestsSection } from "../components/PullRequests/ProfilePullRequestsSection";
 import { UserDetails } from "../types/UserDetails";
 import { apiWrapper } from "../apiWrapper";
-import { PageWrapper } from "../components/PageWrapper";
 
 const Profile: NextPage = () => {
   const { data: session, status } = useSession();
