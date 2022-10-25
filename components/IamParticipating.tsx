@@ -107,7 +107,7 @@ const IamParticipating = (props: IamParticipatingType) => {
                   color={"gray.400"}
                   style={{ bottom: 0, position: "absolute" }}
                 >
-                  Powered by Hacktobered.com
+                  made with 💖 by hacktobered.com
                 </Text>
               </VStack>
             </Flex>

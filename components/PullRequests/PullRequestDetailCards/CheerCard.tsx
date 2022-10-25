@@ -50,8 +50,8 @@ const CheerCard = (props: PullRequest) => {
         />
         <Flex flexDirection="column" mb="30px">
           <Image
-            src={pull.author.avatarUrl}
-            alt={pull.author.login}
+            src={pull.author?.avatarUrl}
+            alt={pull.author?.login}
             border="5px solid red"
             mx="auto"
             borderColor={boxBg}
@@ -67,7 +67,7 @@ const CheerCard = (props: PullRequest) => {
             fontSize="sm"
             fontWeight="500"
           >
-            {pull.author.login}
+            {pull.author?.login}
           </Text>
           <Text
             fontWeight="600"
@@ -112,8 +112,8 @@ const CheerCard = (props: PullRequest) => {
           </Button>
         </Flex>
         <Box alignSelf={"center"} display={"flex"} fontSize="sm" mt={"10"}>
-          <Text mr={"1"}>made with</Text> 
-          <BsHeartFill fontSize="sm" color={"#DC143C"}/> 
+          <Text mr={"1"}>made with</Text>
+          <BsHeartFill fontSize="sm" color={"#DC143C"} />
           <Text ml={"1"}>by hacktobered</Text>
         </Box>
       </Flex>

@@ -25,6 +25,7 @@ import IamParticipating from "../components/IamParticipating";
 import { LoginComponent } from "../components/LoginComponent";
 import { NavBar } from "../components/NavBar";
 import type { NextPage } from "next";
+import { ProfilePullRequestsSection } from "../components/PullRequests/ProfilePullRequestsSection";
 import { UserDetails } from "../types/UserDetails";
 import { apiWrapper } from "../apiWrapper";
 
@@ -79,6 +80,7 @@ const Profile: NextPage = () => {
                           completionStatus={completionStatus}
                           user={userDetails}
                         />
+                        <ProfilePullRequestsSection user={userDetails} />
                         <HacktoberFestSection />
                       </TabPanel>
                       <TabPanel>

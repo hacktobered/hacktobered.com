@@ -54,6 +54,10 @@ const fetchUserPullRequests = async (accessToken: string, login: string) => {
               nameWithOwner
               description
             }
+            author {
+              login
+              avatarUrl
+            }
             createdAt
             mergedAt
             url
