@@ -14,8 +14,6 @@ import { NavBar } from "../../../../../components/NavBar";
 import type { NextPage } from "next";
 import { PageWrapper } from "../../../../../components/PageWrapper";
 import { PullRequest } from "../../../../../types/PullRequest";
-
-import { UserCard } from "../../../../../components/UserCard";
 import { UserDetails } from "../../../../../types/UserDetails";
 import { apiWrapper } from "../../../../../apiWrapper";
 import { useRouter } from "next/router";

@@ -32,7 +32,7 @@ const PRCheerCard = (props: PullRequest) => {
     setPoweredBy("normal");
     if (domEl.current) {
       toPng(domEl.current).then(function (dataUrl) {
-        download(dataUrl, "my-node.png");
+        download(dataUrl, "my-pr.png");
         setPoweredBy("none");
       });
     }

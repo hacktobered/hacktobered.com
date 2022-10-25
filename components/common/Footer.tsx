@@ -5,7 +5,7 @@ import Link from "next/link";
 export const Footer = () => {
   return (
     <Box>
-      <Center bg="gray.100" py={{ base: "8", md: "12" }}>
+      <Center py={{ base: "8", md: "12" }}>
         <IconButton
           variant={"link"}
           as="a"

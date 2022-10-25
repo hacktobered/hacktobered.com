@@ -28,6 +28,7 @@ import type { NextPage } from "next";
 import { ProfilePullRequestsSection } from "../components/PullRequests/ProfilePullRequestsSection";
 import { UserDetails } from "../types/UserDetails";
 import { apiWrapper } from "../apiWrapper";
+import { PageWrapper } from "../components/PageWrapper";
 
 const Profile: NextPage = () => {
   const { data: session, status } = useSession();
@@ -50,56 +51,63 @@ const Profile: NextPage = () => {
   if (session) {
     return (
       <>
-        <NavBar />
-        <Box as="section" bg="gray.100">
-          {userDetails != null ? (
-            <>
-              <Card mt={6}>
-                <Stack spacing="16">
-                  <Tabs variant="enclosed" size={"md"}>
-                    <TabList>
-                      <Tab>Home</Tab>
-                      <Tab>Pull Reqs</Tab>
-                      <Tab>Repositories</Tab>
-                    </TabList>
-                    <TabPanels>
-                      <TabPanel>
-                        <FormControl mb={4} display="flex" alignItems="center">
-                          <Switch
-                            isChecked={completionStatus}
-                            onChange={() =>
-                              setCompletionStatus(!completionStatus)
-                            }
-                            id="completion-status"
+        <PageWrapper>
+          <Box as="section" bg="gray.100" pt={6}>
+            {userDetails != null ? (
+              <>
+                <Card>
+                  <Stack spacing="16">
+                    <Tabs variant="enclosed" size={"md"}>
+                      <TabList>
+                        <Tab>Home</Tab>
+                        <Tab>Pull Reqs</Tab>
+                        <Tab>Repositories</Tab>
+                      </TabList>
+                      <TabPanels>
+                        <TabPanel>
+                          <FormControl
+                            mb={4}
+                            display="flex"
+                            alignItems="center"
+                          >
+                            <Switch
+                              isChecked={completionStatus}
+                              onChange={() =>
+                                setCompletionStatus(!completionStatus)
+                              }
+                              id="completion-status"
+                            />
+                            <FormLabel
+                              ml={2}
+                              mb={0}
+                              htmlFor="completion-status"
+                            >
+                              Completed #Hacktober
+                            </FormLabel>
+                          </FormControl>
+                          <IamParticipating
+                            completionStatus={completionStatus}
+                            user={userDetails}
                           />
-                          <FormLabel ml={2} mb={0} htmlFor="completion-status">
-                            Completed #Hacktober
-                          </FormLabel>
-                        </FormControl>
-                        <IamParticipating
-                          completionStatus={completionStatus}
-                          user={userDetails}
-                        />
-                        <ProfilePullRequestsSection user={userDetails} />
-                        <HacktoberFestSection />
-                      </TabPanel>
-                      <TabPanel>
-                        <ContributorSection user={userDetails} />
-                      </TabPanel>
-                      <TabPanel>
-                        <MaintainerSection user={userDetails} />
-                      </TabPanel>
-                    </TabPanels>
-                  </Tabs>
-                </Stack>
-              </Card>
-            </>
-          ) : (
-            <HalloweenLoading />
-          )}
-        </Box>
-
-        <Footer />
+                          <ProfilePullRequestsSection user={userDetails} />
+                          <HacktoberFestSection />
+                        </TabPanel>
+                        <TabPanel>
+                          <ContributorSection user={userDetails} />
+                        </TabPanel>
+                        <TabPanel>
+                          <MaintainerSection user={userDetails} />
+                        </TabPanel>
+                      </TabPanels>
+                    </Tabs>
+                  </Stack>
+                </Card>
+              </>
+            ) : (
+              <HalloweenLoading />
+            )}
+          </Box>
+        </PageWrapper>
       </>
     );
   } else {
