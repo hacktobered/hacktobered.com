@@ -1,5 +1,5 @@
+import { Labels, Repository } from "./Repository";
 import { Author } from "./Author";
-import { Repository } from "./Repository";
 
 export interface PullRequest {
   number: number;
@@ -8,6 +8,7 @@ export interface PullRequest {
   repository: Repository;
   createdAt: Date;
   mergedAt: Date;
+  labels: Labels;
   url: string;
   changedFiles: number;
   additions: number;

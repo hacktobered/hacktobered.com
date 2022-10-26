@@ -42,7 +42,7 @@ const fetchUserPullRequests = async (accessToken: string, login: string) => {
     search(
       query: "is:merged is:pr is:public archived:false author:***** -user:*****"
       type: ISSUE
-      first: 10
+      first: 25
     ) {
       issueCount
       edges {
@@ -53,6 +53,15 @@ const fetchUserPullRequests = async (accessToken: string, login: string) => {
             repository {
               nameWithOwner
               description
+              repositoryTopics(first:15) {
+                edges{
+                  node {
+                    topic {
+                      name
+                    }
+                  }
+                }
+              }
             }
             author {
               login
@@ -60,6 +69,11 @@ const fetchUserPullRequests = async (accessToken: string, login: string) => {
             }
             createdAt
             mergedAt
+            labels(first: 15) {
+              nodes {
+                name
+              }
+            }
             url
             state
           }

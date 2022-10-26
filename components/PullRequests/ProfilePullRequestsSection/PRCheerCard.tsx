@@ -11,12 +11,18 @@ import {
   Link,
   SimpleGrid,
   Stack,
+  Tag,
+  TagLabel,
+  TagLeftIcon,
+  TagRightIcon,
   Text,
   VStack,
+  Wrap,
   useColorModeValue,
+  WrapItem,
 } from "@chakra-ui/react";
+import { BsGithub, BsTrophy } from "react-icons/bs";
 import { BiGitPullRequest } from "react-icons/bi";
-import { BsGithub } from "react-icons/bs";
 import { MdIosShare } from "react-icons/md";
 import { PullRequest } from "../../../types/PullRequest";
 import download from "downloadjs";
@@ -109,6 +115,38 @@ const PRCheerCard = (props: PullRequest) => {
               </Text>
               <Text color="muted">{pull.title}</Text>
             </HStack>
+            <Wrap py="6px">
+              {pull.labels.nodes.map((n) =>
+                n.name.indexOf("hacktober") > -1 ? (
+                  <WrapItem>
+                    <Tag
+                      size={"sm"}
+                      key={n.name}
+                      variant="outline"
+                      colorScheme="blue"
+                    >
+                      <TagLeftIcon as={BsTrophy} />
+                      <TagLabel>{n.name}</TagLabel>
+                    </Tag>
+                  </WrapItem>
+                ) : null
+              )}
+              {pull.repository.repositoryTopics.edges.map((n) =>
+                n.node.topic.name.indexOf("hacktober") > -1 ? (
+                  <WrapItem>
+                    <Tag
+                      size={"sm"}
+                      key={n.node.topic.name}
+                      variant="outline"
+                      colorScheme="blue"
+                    >
+                      <TagLeftIcon as={BsTrophy} />
+                      <TagLabel>{n.node.topic.name}</TagLabel>
+                    </Tag>
+                  </WrapItem>
+                ) : null
+              )}
+            </Wrap>
 
             <Text pt="24px" fontSize="lg" textAlign="center" fontWeight="bold">
               #HacktoberFest2022
