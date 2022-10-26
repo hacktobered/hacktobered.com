@@ -18,8 +18,8 @@ import {
   Text,
   VStack,
   Wrap,
-  useColorModeValue,
   WrapItem,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { BsGithub, BsTrophy } from "react-icons/bs";
 import { BiGitPullRequest } from "react-icons/bi";
