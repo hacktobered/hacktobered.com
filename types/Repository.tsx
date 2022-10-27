@@ -22,4 +22,5 @@ export interface Labels {
 
 export interface NodeElement {
   name: string;
+  id?: string;
 }

@@ -8,7 +8,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { Card } from "../../common/Card";
+import Confetti from "react-confetti";
 import PRCheerCard from "./PRCheerCard";
 import { SearchResults } from "../../../types/SearchResults";
 import { UserCardPropType } from "../../../types/UserCardPropType";
@@ -17,6 +17,7 @@ import { useSession } from "next-auth/react";
 
 export const ProfilePullRequestsSection = (props: UserCardPropType) => {
   const [searchData, setSearchData] = useState<SearchResults>();
+  const [hacktobered, SetHacktobered] = useState<boolean>(false);
   const { data: session, status } = useSession();
 
   async function fetchPR(accessToken: any, login: string) {
@@ -26,8 +27,35 @@ export const ProfilePullRequestsSection = (props: UserCardPropType) => {
         issueCount: pullData.issueCount,
         edges: pullData.edges,
       });
+      SetHacktobered(checkHacktoberCompletion(pullData));
     }
   }
+
+  const checkHacktoberCompletion = (pullData: SearchResults): boolean => {
+    let isFinished = false;
+    for (let i = 0; i < pullData.edges.length; i++) {
+      const pull = pullData.edges[i];
+      let isHacktoberPR = pull.node.labels.nodes.filter(
+        (n) => n.name.indexOf("hacktober") > -1
+      );
+
+      for (
+        let j = 0;
+        j < pull.node.repository.repositoryTopics.edges.length;
+        j++
+      ) {
+        const topic = pull.node.repository.repositoryTopics.edges[j];
+        let isHacktoberRepo = topic.node.topic.name.indexOf("hacktober") > -1;
+        if (isHacktoberRepo) return isHacktoberRepo;
+      }
+
+      isFinished = isHacktoberPR.length > 0;
+      console.log(pull.node.labels.nodes, isFinished);
+      if (isFinished) return isFinished;
+    }
+
+    return isFinished;
+  };
   useEffect(() => {
     if (session) {
       fetchPR(session.accessToken, props.user.login);
@@ -44,6 +72,9 @@ export const ProfilePullRequestsSection = (props: UserCardPropType) => {
           </Text>
         </>
       )}
+
+      {hacktobered && <Confetti />}
+
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing="8">
         {searchData?.edges &&
           searchData?.edges.map((pullRequest) => (
@@ -54,7 +85,10 @@ export const ProfilePullRequestsSection = (props: UserCardPropType) => {
               {...props}
               mt={8}
             >
-              <PRCheerCard {...pullRequest.node} />
+              <PRCheerCard
+                key={pullRequest.node.number}
+                {...pullRequest.node}
+              />
             </Box>
           ))}
       </SimpleGrid>

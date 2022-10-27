@@ -58,6 +58,7 @@ const fetchUserPullRequests = async (accessToken: string, login: string) => {
                   node {
                     topic {
                       name
+                      id
                     }
                   }
                 }

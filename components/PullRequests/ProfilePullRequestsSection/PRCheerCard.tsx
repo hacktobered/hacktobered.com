@@ -118,7 +118,7 @@ const PRCheerCard = (props: PullRequest) => {
             <Wrap py="6px">
               {pull.labels.nodes.map((n) =>
                 n.name.indexOf("hacktober") > -1 ? (
-                  <WrapItem>
+                  <WrapItem key={n.name}>
                     <Tag
                       size={"sm"}
                       key={n.name}
@@ -133,7 +133,7 @@ const PRCheerCard = (props: PullRequest) => {
               )}
               {pull.repository.repositoryTopics.edges.map((n) =>
                 n.node.topic.name.indexOf("hacktober") > -1 ? (
-                  <WrapItem>
+                  <WrapItem key={n.node.topic.id}>
                     <Tag
                       size={"sm"}
                       key={n.node.topic.name}
