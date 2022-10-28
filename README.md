@@ -38,7 +38,7 @@ yarn
 
 4. Create [Github OAuth App](https://github.com/organizations/hacktobered/settings/applications) . Copy Client ID and Client Secret into GITHUB_ID and GITHUB_SECRET.
 
-5. If you want to save logged-in user details, you can use mongo db. Provide connection details in .env.local. However if you don't want - make sure to comment line 4 and line 14 in pages\api\auth\[...nextauth].tsx before running the code.
+5. If you want to save logged-in user details, you can use mongo db. Provide connection details in .env.local. However, if you don't want - make sure to comment line 4 and line 14 in pages\api\auth\[...nextauth].tsx before running the code.
 
    ```js
     //import clientPromise from "../../../lib/mongodb";
@@ -63,7 +63,7 @@ Facing any issues? Feel free to open a ticket.
 
 - Before Contribute Please read [CONTRIBUTING.md](https://github.com/hacktobered/hacktobered.com/blob/main/CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](https://github.com/hacktobered/hacktobered.com/blob/main/CODE_OF_CONDUCT.md)
 
-- Create an issue of the project or a feature you would like to add in the project and get the task assigned for youself.(Issue can be any bug fixes or any feature you want to add in this project).
+- Create an issue of the project or a feature you would like to add in the project and get the task assigned for yourself. (Issue can be any bug fixes or any feature you want to add in this project).
 
 - Fork the repo to your Github.<br/>
 
