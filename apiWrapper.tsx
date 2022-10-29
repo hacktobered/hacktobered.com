@@ -1,6 +1,6 @@
 import {
   OwnedRepoResultsDataWrapper,
-  OwnedRepository,
+  Repository,
 } from "./types/OwnedRepoResults";
 import { SearchResults, SearchResultsDataWrapper } from "./types/SearchResults";
 import { ContributedRepositoriesData } from "./types/ContributedRepositoriesData";
@@ -201,7 +201,7 @@ const fetchContributedRepositories = async (accessToken: string) => {
       },
     }
   );
-  const contributedRepos: OwnedRepository[] | undefined =
+  const contributedRepos: Repository[] | undefined =
     searchData.viewer?.repositoriesContributedTo.nodes;
   return contributedRepos;
 };
@@ -273,7 +273,7 @@ const fetchUserMaintainedRepositories = async (
       },
     }
   );
-  const ownedRepos: OwnedRepository[] | undefined =
+  const ownedRepos: Repository[] | undefined =
     searchData.viewer?.original.nodes;
   return ownedRepos;
 };
