@@ -10,6 +10,7 @@ import {
   Image,
   Link,
   SimpleGrid,
+  Spacer,
   Stack,
   Tag,
   TagLabel,
@@ -21,24 +22,30 @@ import {
   WrapItem,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { BiGitPullRequest, BiGitRepoForked, BiStar } from "react-icons/bi";
 import { BsGithub, BsTrophy } from "react-icons/bs";
-import { BiGitPullRequest } from "react-icons/bi";
 import { MdIosShare } from "react-icons/md";
-import { PullRequest } from "../../../types/PullRequest";
+import { Repository } from "../../types/OwnedRepoResults";
+import { UserDetails } from "../../types/UserDetails";
 import download from "downloadjs";
 import { toPng } from "html-to-image";
 import { useRef } from "react";
 
-const PRCheerCard = (props: PullRequest) => {
+type RepoCheerCardProps = {
+  user: UserDetails;
+  repo: Repository;
+};
+
+const RepoCheerCard = (props: RepoCheerCardProps) => {
   const [poweredBy, setPoweredBy] = React.useState("none");
   const domEl = useRef<HTMLDivElement>(null);
-  const pull = props;
+  const { repo, user } = props;
 
   const downloadPNG = () => {
     setPoweredBy("normal");
     if (domEl.current) {
       toPng(domEl.current).then(function (dataUrl) {
-        download(dataUrl, "my-pr.png");
+        download(dataUrl, repo.name + "-repo.png");
         setPoweredBy("none");
       });
     }
@@ -70,10 +77,10 @@ const PRCheerCard = (props: PullRequest) => {
               borderRadius="20px"
               width="100%"
             />
-            <Flex flexDirection="column" mb="30px">
+            <Flex flexDirection="column">
               <Image
-                src={pull.author?.avatarUrl}
-                alt={pull.author?.login}
+                src={user.avatar_url}
+                alt={user.login}
                 border="5px solid red"
                 mx="auto"
                 borderColor={boxBg}
@@ -89,7 +96,7 @@ const PRCheerCard = (props: PullRequest) => {
                 fontSize="sm"
                 fontWeight="500"
               >
-                {pull.author?.login}
+                {user.login}
               </Text>
               <Text
                 fontWeight="600"
@@ -98,66 +105,61 @@ const PRCheerCard = (props: PullRequest) => {
                 fontSize="xl"
               >
                 {" "}
-                Yay! I made an open source contribution.
+                Yay! I contributed to an awesome repository.
               </Text>
             </Flex>
           </Flex>
-          <Flex direction="column" bg={boxBg} px={5}>
+          <Divider my={4} />
+
+          <Box width="100%">
             <HStack py="6px">
-              <Text color="muted">
-                <Icon as={BsGithub} color="blue.500" mr={2} />
+              <Icon as={BsGithub} color="blue.500" />
+              <Text fontSize={"lg"} color="muted" fontWeight="semibold">
+                {repo?.name}
               </Text>
-              <Text color="muted">{pull.repository?.nameWithOwner}</Text>
             </HStack>
-            <HStack py="6px">
-              <Text color="muted">
-                <Icon as={BiGitPullRequest} color="blue.500" mr={2} />
+            <Flex justifyItems={"flex-end"}>
+              <HStack>
+                <Icon as={BiStar} color="blue.500" />
+                <Text color="muted">{repo.stargazers.totalCount}</Text>
+              </HStack>
+              <Spacer />
+              <HStack spacing="1">
+                <Icon as={BiGitRepoForked} color="blue.500" />
+                <Text color="muted">{repo?.forkCount}</Text>
+              </HStack>
+            </Flex>
+            <HStack py="6">
+              <Text fontSize={"sm"} color="muted">
+                {repo.description}
               </Text>
-              <Text color="muted">{pull.title}</Text>
             </HStack>
-            <Wrap py="6px">
-              {pull.labels.nodes.map((n) =>
-                n.name.indexOf("hacktober") > -1 ? (
-                  <WrapItem key={n.name}>
+            <Wrap shouldWrapChildren>
+              {repo.repositoryTopics.nodes?.map((n) =>
+                n.topic.name.indexOf("hacktober") > -1 ? (
+                  <WrapItem key={n.topic.name}>
                     <Tag
                       size={"sm"}
-                      key={n.name}
+                      key={n.topic.name}
                       variant="outline"
                       colorScheme="blue"
                     >
                       <TagLeftIcon as={BsTrophy} />
-                      <TagLabel>{n.name}</TagLabel>
-                    </Tag>
-                  </WrapItem>
-                ) : null
-              )}
-              {pull.repository.repositoryTopics.edges.map((n) =>
-                n.node.topic.name.indexOf("hacktober") > -1 ? (
-                  <WrapItem key={n.node.topic.id}>
-                    <Tag
-                      size={"sm"}
-                      key={n.node.topic.name}
-                      variant="outline"
-                      colorScheme="blue"
-                    >
-                      <TagLeftIcon as={BsTrophy} />
-                      <TagLabel>{n.node.topic.name}</TagLabel>
+                      <TagLabel>{n.topic.name}</TagLabel>
                     </Tag>
                   </WrapItem>
                 ) : null
               )}
             </Wrap>
-
-            <Text pt="24px" fontSize="lg" textAlign="center" fontWeight="bold">
-              #HacktoberFest2022
+          </Box>
+          <Text pt="24px" fontSize="lg" textAlign="center" fontWeight="bold">
+            #HacktoberFest2022
+          </Text>
+          <Box alignSelf={"center"} display={"flex"} fontSize="sm" mt={"6"}>
+            <Text fontSize="8px" pt={4} color={"gray.400"}>
+              made with 💖 by hacktobered.com
             </Text>
-
-            <Box alignSelf={"center"} display={"flex"} fontSize="sm" mt={"10"}>
-              <Text fontSize="8px" pt={4} color={"gray.400"}>
-                made with 💖 by hacktobered.com
-              </Text>
-            </Box>
-          </Flex>
+          </Box>
         </Flex>
         <Button
           as="a"
@@ -173,4 +175,4 @@ const PRCheerCard = (props: PullRequest) => {
   );
 };
 
-export default PRCheerCard;
+export default RepoCheerCard;

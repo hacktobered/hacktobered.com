@@ -4,9 +4,9 @@ import { BiGitPullRequest } from "react-icons/bi";
 import { BsGithub } from "react-icons/bs";
 import { MdIosShare } from "react-icons/md";
 import NextLink from "next/link";
-import { OwnedRepository } from "../../types/OwnedRepoResults";
+import { Repository } from "../../types/OwnedRepoResults";
 
-export const RepositoryCard = (props: OwnedRepository) => {
+export const RepositoryCard = (props: Repository) => {
   const repo = props;
   return (
     <Stack minW={{ base: "none", lg: "lg" }} fontSize="md" spacing="4">

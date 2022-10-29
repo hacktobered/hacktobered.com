@@ -7,10 +7,10 @@ export interface Viewer {
 }
 
 export interface Original {
-  nodes: OwnedRepository[];
+  nodes: Repository[];
 }
 
-export interface OwnedRepository {
+export interface Repository {
   name: string;
   url: string;
   description: null | string;

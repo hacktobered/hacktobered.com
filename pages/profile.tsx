@@ -11,22 +11,18 @@ import {
   TabPanels,
   Tabs,
 } from "@chakra-ui/react";
-import {
-  ContributorSection,
-  MaintainerSection,
-} from "../components/ProfileSections";
+
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { Card } from "../components/common/Card";
-import { Footer } from "../components/common/Footer";
 import { HacktoberFestSection } from "../components/common/HacktoberFestSection";
 import { HalloweenLoading } from "../components/common/HalloweenLoading";
 import IamParticipating from "../components/IamParticipating";
 import { LoginComponent } from "../components/LoginComponent";
-import { NavBar } from "../components/NavBar";
 import type { NextPage } from "next";
 import { PageWrapper } from "../components/PageWrapper";
-import { ProfilePullRequestsSection } from "../components/PullRequests/ProfilePullRequestsSection";
+import { PullRequestsSection } from "../components/PullRequests/PullRequestsSection";
+import { ReposSection } from "../components/Repos/ReposSection";
 import { UserDetails } from "../types/UserDetails";
 import { apiWrapper } from "../apiWrapper";
 
@@ -52,16 +48,15 @@ const Profile: NextPage = () => {
     return (
       <>
         <PageWrapper>
-          <Box as="section" bg="gray.100" pt={6}>
+          <Box as="section" bg="gray.100">
             {userDetails != null ? (
               <>
                 <Card>
                   <Stack spacing="16">
                     <Tabs variant="enclosed" size={"md"}>
                       <TabList>
-                        <Tab>Home</Tab>
-                        <Tab>Pull Reqs</Tab>
-                        <Tab>Repositories</Tab>
+                        <Tab>My PRs</Tab>
+                        <Tab>Contributed Repos</Tab>
                       </TabList>
                       <TabPanels>
                         <TabPanel>
@@ -89,14 +84,11 @@ const Profile: NextPage = () => {
                             completionStatus={completionStatus}
                             user={userDetails}
                           />
-                          <ProfilePullRequestsSection user={userDetails} />
+                          <PullRequestsSection user={userDetails} />
                           <HacktoberFestSection />
                         </TabPanel>
                         <TabPanel>
-                          <ContributorSection user={userDetails} />
-                        </TabPanel>
-                        <TabPanel>
-                          <MaintainerSection user={userDetails} />
+                          <ReposSection user={userDetails} />
                         </TabPanel>
                       </TabPanels>
                     </Tabs>

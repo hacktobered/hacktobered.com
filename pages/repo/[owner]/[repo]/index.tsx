@@ -65,11 +65,16 @@ const Home: NextPage = () => {
             )}
             <Divider py={4} />
             {pullRequests && pullRequests.length ? (
-              <Text py="4" fontWeight={"600"}>
+              <Text px={{ base: "6", md: "8" }} py="4" fontWeight={"600"}>
                 {pullRequests?.length} Pull Requests found
               </Text>
             ) : (
-              <Text align={"center"} py="4" fontWeight={"600"}>
+              <Text
+                px={{ base: "6", md: "8" }}
+                align={"center"}
+                py="4"
+                fontWeight={"600"}
+              >
                 No Pull Requests found for this repo
               </Text>
             )}
