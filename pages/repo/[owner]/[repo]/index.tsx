@@ -56,7 +56,7 @@ const Home: NextPage = () => {
       <>
         <PageWrapper bgColor={"white"}>
           <BreadCrumbs />
-          <Box minH="80vh" as="section" py="6">
+          <Box minH="80vh" as="section" py="6" maxW="3xl" mx="auto">
             {repoContributors && pullRequests && (
               <ContributorsCard
                 contributors={repoContributors}

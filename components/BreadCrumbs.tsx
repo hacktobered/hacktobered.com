@@ -12,7 +12,7 @@ import { AiFillHome } from "react-icons/ai";
 import { BiChevronRight } from "react-icons/bi";
 
 export const BreadCrumbs = (props: BoxProps) => (
-  <Box as="section" py="6">
+  <Box as="section" maxW="3xl" mx="auto" pt="6">
     <Breadcrumb spacing="8px" separator={<BiChevronRight color="gray.500" />}>
       <BreadcrumbItem>
         <BreadcrumbLink href="/">

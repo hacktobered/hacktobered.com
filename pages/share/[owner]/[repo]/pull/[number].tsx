@@ -45,7 +45,7 @@ const Home: NextPage = () => {
       <>
         <PageWrapper>
           <BreadCrumbs />
-          <Box as="section" py="6">
+          <Box as="section">
             {pullRequest != null ? (
               <>
                 <Card mt={6}>
