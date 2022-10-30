@@ -19,7 +19,6 @@ import download from "downloadjs";
 import { toPng } from "html-to-image";
 import { useRef } from "react";
 
-
 type HacktoberedCardType = {
   user: UserDetails;
   prCount: number;
@@ -60,14 +59,13 @@ const HacktoberedCard = (props: HacktoberedCardType) => {
             position="relative"
             bg={useColorModeValue("white", "gray.700")}
             shadow={{ md: "base" }}
-            style={{"display":"flex"}}
           >
             <Box
               position="absolute"
               inset="0"
+              height="24"
               bg="blue.600"
               roundedTop="inherit"
-              h={8}
             />
             <Avatar size="2xl" src={user.avatar_url}></Avatar>
             <VStack spacing="1" flex="1">
