@@ -32,7 +32,6 @@ type ContributorCardProps = {
 const ContributorsCard = (props: ContributorCardProps) => {
   const { contributors, pullRequests } = props;
   const repository = pullRequests[0]?.repository;
-  console.log(contributors, pullRequests, repository);
   const domEl = useRef<HTMLDivElement>(null);
 
   const downloadPNG = () => {

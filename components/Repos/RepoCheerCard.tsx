@@ -138,12 +138,7 @@ const RepoCheerCard = (props: RepoCheerCardProps) => {
               {repo.repositoryTopics.nodes?.map((n) =>
                 n.topic.name.indexOf("hacktober") > -1 ? (
                   <WrapItem key={n.topic.name}>
-                    <Tag
-                      size={"sm"}
-                      key={n.topic.name}
-                      variant="outline"
-                      colorScheme="blue"
-                    >
+                    <Tag size={"sm"} variant="outline" colorScheme="blue">
                       <TagLeftIcon as={BsTrophy} />
                       <TagLabel>{n.topic.name}</TagLabel>
                     </Tag>

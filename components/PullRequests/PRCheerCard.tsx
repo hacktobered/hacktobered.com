@@ -119,12 +119,7 @@ const PRCheerCard = (props: PullRequest) => {
               {pull.labels.nodes.map((n) =>
                 n.name.indexOf("hacktober") > -1 ? (
                   <WrapItem key={n.name}>
-                    <Tag
-                      size={"sm"}
-                      key={n.name}
-                      variant="outline"
-                      colorScheme="blue"
-                    >
+                    <Tag size={"sm"} variant="outline" colorScheme="blue">
                       <TagLeftIcon as={BsTrophy} />
                       <TagLabel>{n.name}</TagLabel>
                     </Tag>
@@ -133,13 +128,8 @@ const PRCheerCard = (props: PullRequest) => {
               )}
               {pull.repository.repositoryTopics.edges.map((n) =>
                 n.node.topic.name.indexOf("hacktober") > -1 ? (
-                  <WrapItem key={n.node.topic.id}>
-                    <Tag
-                      size={"sm"}
-                      key={n.node.topic.name}
-                      variant="outline"
-                      colorScheme="blue"
-                    >
+                  <WrapItem key={n.node.topic.name}>
+                    <Tag size={"sm"} variant="outline" colorScheme="blue">
                       <TagLeftIcon as={BsTrophy} />
                       <TagLabel>{n.node.topic.name}</TagLabel>
                     </Tag>

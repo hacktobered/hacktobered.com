@@ -14,6 +14,8 @@
     "@emotion/styled": "^11.10.4",
     "@next-auth/mongodb-adapter": "^1.1.1",
     "@octokit/graphql": "^5.0.1",
+    "@remotion/cli": "^3.2.40",
+    "@remotion/player": "^3.2.40",
     "downloadjs": "^1.4.7",
     "framer-motion": "^7.5.3",
     "html-to-image": "^1.10.8",
@@ -24,7 +26,8 @@
     "react": "18.2.0",
     "react-confetti": "^6.1.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.6.0"
+    "react-icons": "^4.6.0",
+    "remotion": "^3.2.40"
   },
   "devDependencies": {
     "@types/downloadjs": "^1.4.3",
