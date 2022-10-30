@@ -131,13 +131,13 @@ const Profile: NextPage = () => {
                       </TabList>
                       <TabPanels>
                         <TabPanel>
-                          {reposData && (
+                          {reposData && reposData.length > 0 ? (
                             <Box my={4}>
                               <Player
                                 component={HacktoberedVideo}
                                 inputProps={videoParams}
                                 durationInFrames={
-                                  270 + (reposData ? reposData.length * 90 : 0)
+                                  360 + (reposData ? reposData.length * 90 : 0)
                                 }
                                 compositionWidth={1920}
                                 compositionHeight={1080}
@@ -150,13 +150,13 @@ const Profile: NextPage = () => {
                                 loop
                               />
                             </Box>
-                          )}
-                          {hacktoberPRs && (
+                          ) : null}
+                          {hacktoberPRs > 0 ? (
                             <HacktoberedCard
                               user={userDetails}
                               prCount={hacktoberPRs}
                             />
-                          )}
+                          ) : null}
                           {searchData && (
                             <PullRequestsSection {...searchData} />
                           )}
