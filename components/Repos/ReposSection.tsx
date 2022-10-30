@@ -14,17 +14,17 @@ export const ReposSection = (props: ReposSectionData) => {
 
   return (
     <>
-      {reposData && reposData.length && (
+      {reposData && reposData.length > 0 ? (
         <Text my={4} fontWeight={"400"}>
           🎉🎉🎉 Here are {reposData.length} public repos where you contributed!
         </Text>
-      )}
+      ) : null}
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing="8">
-        {reposData &&
-          reposData.length &&
-          reposData.map((repo) => (
-            <RepoCheerCard key={repo.name} repo={repo} user={props.user} />
-          ))}
+        {reposData && reposData.length > 0
+          ? reposData.map((repo) => (
+              <RepoCheerCard key={repo.name} repo={repo} user={props.user} />
+            ))
+          : null}
       </SimpleGrid>
       {!reposData?.length && (
         <Center mt={4}>
