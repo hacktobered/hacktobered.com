@@ -1,27 +1,16 @@
 import * as React from "react";
-import { Center, Divider, SimpleGrid, Text } from "@chakra-ui/react";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { Center, SimpleGrid, Text } from "@chakra-ui/react";
 import RepoCheerCard from "./RepoCheerCard";
 import { Repository } from "../../types/OwnedRepoResults";
-import { UserCardPropType } from "../../types/UserCardPropType";
-import { apiWrapper } from "../../apiWrapper";
+import { UserDetails } from "../../types/UserDetails";
 
-export const ReposSection = (props: UserCardPropType) => {
-  const [reposData, setReposData] = useState<Repository[]>();
-  const { data: session, status } = useSession();
+type ReposSectionData = {
+  reposData: Repository[];
+  user: UserDetails;
+};
 
-  async function fetchMaintainedRepositories(accessToken: any, login: string) {
-    const reposDataResponse = await apiWrapper.fetchContributedRepositories(
-      accessToken
-    );
-    setReposData(reposDataResponse);
-  }
-  useEffect(() => {
-    if (session) {
-      fetchMaintainedRepositories(session.accessToken, props.user.login);
-    }
-  }, [session, props.user.login]);
+export const ReposSection = (props: ReposSectionData) => {
+  const reposData = props.reposData;
 
   return (
     <>
