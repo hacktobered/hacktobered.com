@@ -41,7 +41,7 @@ const HacktoberedCard = (props: HacktoberedCardType) => {
 
   return (
     <Stack fontSize="sm" spacing="4" backgroundColor="white">
-      <Box as="section" maxW={{ base: "xs", md: "3xl" }} mx="auto">
+      <Flex as="section" margin="4" padding="4">
         <VStack
           p={5}
           borderColor={"gray.100"}
@@ -60,7 +60,7 @@ const HacktoberedCard = (props: HacktoberedCardType) => {
             bg={useColorModeValue("white", "gray.700")}
             shadow={{ md: "base" }}
           >
-            <Box
+            <Flex
               position="absolute"
               inset="0"
               height="24"
@@ -114,7 +114,7 @@ const HacktoberedCard = (props: HacktoberedCardType) => {
             Share
           </Button>
         </VStack>
-      </Box>
+      </Flex>
     </Stack>
   );
 };
