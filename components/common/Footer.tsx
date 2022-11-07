@@ -9,6 +9,7 @@ export const Footer = () => {
         <IconButton
           variant={"link"}
           as="a"
+          color="white"
           target={"_blank"}
           href="https://github.com/hacktobered/hacktobered.com"
           aria-label="Github"
@@ -21,6 +22,7 @@ export const Footer = () => {
           href="https://twitter.com/hacktobered"
           aria-label="Twitter"
           ml={5}
+          color="white"
           icon={<FaTwitter fontSize="20px" />}
         />
       </Center>

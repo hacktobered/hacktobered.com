@@ -15,11 +15,20 @@ import { HiPlay } from "react-icons/hi";
 import Image from "next/image";
 import NextLink from "next/link";
 import type { NextPage } from "next";
+import PresentationBox from "../components/common/PresentationBox";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      style={{
+        backgroundImage: `url(/card-background.svg)`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "bottom",
+        backgroundAttachment: "fixed",
+      }}
+    >
       <Head>
         <title>Hacktobered!</title>
         <meta
@@ -112,12 +121,13 @@ const Home: NextPage = () => {
                   zIndex="1"
                   h={{ lg: "100%" }}
                   objectFit="cover"
-                  src="hero.png"
+                  src="herov2.png"
                   alt="Hacktobered hero image"
                 />
                 <Box pos="absolute" w="100%" h="100%" top="-4" left="-4" />
               </Box>
             </Stack>
+            <PresentationBox />
           </Box>
         </Box>
 
