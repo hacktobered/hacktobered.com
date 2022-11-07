@@ -12,6 +12,24 @@ import NextLink from "next/link";
 import React from "react";
 
 const PresentationBox = () => {
+  const sections = {
+    1: {
+      title: "Get proud!",
+      description:
+        "Now you can share your achievements with others via Instagram stories, Whatsapp status or Twitter. Don't do it manualy.",
+    },
+    2: {
+      title: "Why should you use it?",
+      description:
+        "You can easily share your PR's and show them to the world just in few steps.",
+    },
+    3: {
+      title: "How it works?",
+      description:
+        "So EASY! Sign in via your GitHub and see overview or share your PR's.",
+    },
+  };
+
   return (
     <Box>
       {/* IMG section */}
@@ -45,7 +63,7 @@ const PresentationBox = () => {
           fontWeight="extrabold"
           letterSpacing="tight"
         >
-          Get proud
+          {sections[1].title}
         </Heading>
         <Text
           w={{ lg: "50%" }}
@@ -55,8 +73,7 @@ const PresentationBox = () => {
           fontWeight="medium"
           textAlign={"end"}
         >
-          Now you can share your achievements with others via Instagram stories,
-          Whatsapp status or Twitter. Don{`'`}t do it manualy.
+          {sections[1].description}
         </Text>
       </Box>
       {/* TEXT 2 section */}
@@ -69,7 +86,7 @@ const PresentationBox = () => {
           fontWeight="extrabold"
           letterSpacing="tight"
         >
-          Why should you use it ?
+          {sections[2].title}
         </Heading>
         <Text
           w={{ lg: "50%" }}
@@ -78,8 +95,7 @@ const PresentationBox = () => {
           fontSize="lg"
           fontWeight="medium"
         >
-          You can easily share your PR{`'`}s and show them to the world just in
-          few steps.
+          {sections[2].description}
         </Text>
       </Box>
       {/* TEXT 3 section */}
@@ -100,7 +116,7 @@ const PresentationBox = () => {
           fontWeight="extrabold"
           letterSpacing="tight"
         >
-          How it works?
+          {sections[3].title}
         </Heading>
         <Text
           w={{ lg: "50%" }}
@@ -110,8 +126,7 @@ const PresentationBox = () => {
           fontWeight="medium"
           textAlign={"end"}
         >
-          Easy to go! Sign in via your GitHub and see or share your PR{`'`}
-          s.
+          {sections[3].description}
         </Text>
       </Box>
       {/* Button section */}
